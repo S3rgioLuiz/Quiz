@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.corpo {
+    background-image: url("../../imagens/background1.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.col-8.text-center.align-self-center img {
+    height: 35vh;
+}
+
+.col-4.text-center.align-self-center.formulario .formulario {
+    width: 100%;
+    height: 44vh;
+    background: linear-gradient(to top right, #333536 42%, #000000 100%);
+    margin-bottom: 4vh;
+}
+
+.input {
+    width: 90%;
+    height: 6vh;
+    background-color: #777575;
+    color: white;
+    margin-top: 4vh;
+}
+
+.input.invalid {
+    background-color: #777575;
+    width: 90%;
+    height: 6vh;
+    margin-top: 4vh;
+    border: #df0000 2px solid;
+}
+
+.input, .input::placeholder {
+    color: white;
+    font-weight: bold;
+}
+
+.input::placeholder{
+    text-align: center;
+}
+
+.entrar {
+    width: 60%;
+    height: 6vh;
+    border-radius: 1vh;
+    color: white;
+    font-weight: bold;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    background: linear-gradient(to right, #077980, #00DFC1);
+}
+
+.recuperar {
+    width: 100%;
+    height: 6vh;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+}
+
+.recuperar:hover {
+    color: #00DFC1; 
+}
+
+.aviso, .recuperar {
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #00DFC1;
+}
+
+.cadastro {
+    width: 100%;
+    background-color: #078063;
+    height: 10vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4vh;
+}

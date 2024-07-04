@@ -48,5 +48,32 @@ if(isset($_POST['cadastrar'])){
     header("Location:../../cadastro.php");
 }
 
+//********* ENTRAR *********
+if(isset($_POST['entrar'])){
+    
+    $array = array($_POST['usuario']);
+
+    if(strpos($array[0], '@')){
+        $usuario = selecionarEmailUsuario($conexao, $array);
+    } else {
+        $usuario = selecionarApelidoUsuario($conexao, $array);
+    }
+
+    if(password_verify($_POST['senha'], $usuario['senha'])){
+        if($usuario['status'] == 0){
+            header("Location:../../index.php");
+            $_SESSION['aviso'] = "Valide o Email!";
+        } else {
+            $_SESSION['logado'] = true;
+            $_SESSION['codigo'] = $usuario['codigo'];
+            $_SESSION['identificacao'] = ($usuario['status'] == 1) ? "comum" : "admin";
+            header("Location:../../home.php");
+        }
+    } else {
+        header("Location:../../index.php");
+        $_SESSION['aviso'] = "Apelido/Email ou Senha Inválidos!";
+    }
+}
+
 
 ?>

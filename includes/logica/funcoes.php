@@ -1,6 +1,6 @@
 <?php
 
-#CADASTRO
+#CADASTRO #LOGIN
 function selecionarApelidoUsuario($conexao, $array){
     try
     {
@@ -18,7 +18,7 @@ function selecionarApelidoUsuario($conexao, $array){
     }  
 }
 
-#CADASTRO
+#CADASTRO #LOGIN
 function selecionarEmailUsuario($conexao,$array){
     try
     {
