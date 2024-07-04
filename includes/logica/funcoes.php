@@ -18,7 +18,7 @@ function selecionarApelidoUsuario($conexao, $array){
     }  
 }
 
-#CADASTRO #LOGIN
+#CADASTRO #LOGIN #RECUPERAR
 function selecionarEmailUsuario($conexao,$array){
     try
     {
@@ -79,22 +79,15 @@ function alterarStatusUserUm($conexao, $array){
     }
 }
 
-#CADASTRO
-function selecionarApelidoUsuarioValido($conexao, $array){
-    try
-    {
-        $query = $conexao->prepare("SELECT * FROM usuario WHERE upper(apelido)=? AND status=1");
-        if($query->execute($array)){
-            $usuario = $query->fetch(PDO::FETCH_ASSOC);
-            return $usuario;
-        }
-        else {
-            return false;
-        }
-    }
-    catch(PDOException $e) {
+#REDEFINIR
+function redefinirSenha($conexao, $array){
+    try {
+        $query = $conexao->prepare("UPDATE usuario set senha = ? where codigo = ?");
+        $resultado = $query->execute($array);       
+        return $resultado;
+    }catch(PDOException $e) {
         echo 'Error: ' . $e->getMessage();
-    }  
+    }
 }
 
 ?>
