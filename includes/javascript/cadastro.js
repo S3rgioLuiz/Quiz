@@ -92,7 +92,7 @@ function validaCadastro(event){
         texto.innerHTML = "Email Inválido";
     }
     else if (itens[1].value.length < 4) {
-        itens[0].classList.add("invalid");
+        itens[1].classList.add("invalid");
         texto.innerHTML = "Apelido deve ter no mínimo 4 Caracteres.";
         d++
     }

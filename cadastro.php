@@ -37,7 +37,7 @@
                         <button type="submit" class="cadastrar" id="cadastrar" name="cadastrar"> CADASTRAR </button>
                     </form>
                 </div>
-                <div class="aviso">
+                <div class="aviso" id="aviso">
                     <?php
                         if(isset($_SESSION['aviso'])){ 
                             echo $_SESSION['aviso'];

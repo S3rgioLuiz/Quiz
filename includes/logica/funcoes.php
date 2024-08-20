@@ -90,4 +90,22 @@ function redefinirSenha($conexao, $array){
     }
 }
 
+#HOME
+function selecionarCodigoUsuario($conexao, $array){
+    try
+    {
+        $query = $conexao->prepare("SELECT * FROM usuario WHERE codigo=?");
+        if($query->execute($array)){
+            $usuario = $query->fetch(PDO::FETCH_ASSOC);
+            return $usuario;
+        }
+        else {
+            return false;
+        }
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
 ?>
