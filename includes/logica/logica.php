@@ -118,5 +118,12 @@ if(isset($_POST['redefinir'])){
     }
 }
 
+//********* SAIR *********
+if(isset($_POST['sair'])){
+    session_start();
+    session_destroy();
+    header('location:../../index.php');
+}
+
 
 ?>
