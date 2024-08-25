@@ -49,7 +49,7 @@
                     ?>
                         <div class="logo"> <img src="imagens/logo.png"> </div>
                         <div class="itens alertas"> <img src="imagens/alertas.svg"> ALERTAS </div>
-                        <a href="amigos.php"><div class="itens amigos"> <img src="imagens/amigos.svg"> AMIGOS </div></a>
+                        <a href="amizade.php"><div class="itens amigos"> <img src="imagens/amigos.svg"> AMIGOS </div></a>
                         <div class="itens desafios"> <img src="imagens/desafios.svg"> DESAFIOS </div>
                         <div class="itens ranking"> <img src="imagens/ranking.svg"> RANKING </div>
                         <div class="itens regras"> <img src="imagens/regras.svg"> REGRAS </div>
