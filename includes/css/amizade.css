@@ -64,8 +64,8 @@ a {
     margin: 0; 
   }
 
-.itens.amigos:hover img {
-    content: url('../../imagens/amigos-b.svg'); 
+.itens.amigos {
+    background-color: #00EA83;
 }
 
 .itens.alertas:hover img {
@@ -88,77 +88,108 @@ a {
     content: url('../../imagens/sair-b.svg'); 
 }
 
-.itens.painel:hover img {
-    content: url('../../imagens/painel-b.svg'); 
-}
-
-
-.perfil {
+.adicionar {
     height: 19vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.acessar {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.acessar:hover {
-    transform: scale(1.1);
-    transition: transform 0.5s ease;
-}
-
-.pontuacao, .apelido {
-    background-color: #078063;
-    font-weight: bold;
-    font-size: 3ch;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.pontuacao {
-    color: white;
-    width: 25%;
-}
-
-.apelido {
-    background-color: #00EA83;
+.col-7.align-self-center .input{
     width: 75%;
+    height: 8vh;
+    background-color: transparent;
+    border: 2px #00EA83 solid;
+    color: #bbbbbb;
+    font-weight: bold;
 }
 
-.apelido img {
-    margin-left: 2%;
+.input::placeholder {
+    text-align: center;
 }
 
-.col-5.align-self-center {
-    height: 70vh;
+.col-7.align-self-center button {
+    width: 22%;
+    height: 8vh;
+    border: 2px #034435 solid;
+    background-color: #034435;
+}
+
+#aviso {
+    color: white;
+    font-weight: bold;
+}
+
+.lista {
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
+.lista .col-9 {
+    display: flex;
+}
+
+.lamigos {
+    width: 80%;
+    height: 8vh;
+    background-color: #00EA83;
+    color: white;
+    font-weight: bold;
+}
+
+.lamigos.small {
+    width: 20%;
+    height: 8vh;
+    background-color: #00EA83;
+    content: url('../../imagens/amigos-c.svg');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lpendentes {
+    width: 80%;
+    height: 8vh;
+    background-color: #034435;
+    color: white;
+    font-weight: bold;
+}
+
+.lpendentes.small {
+    width: 20%;
+    height: 8vh;
+    background-color: #034435;
+    content: url('../../imagens/adicionar.svg');
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.lamigos, .lpendentes {
+    transition: all 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    margin-top: 3vh;
+}
+
+.usuarios {
+    height: 65vh;
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.lista, .usuarios {
+    width: 100%;
+    background-color: rgba(30, 29, 29, 0.8);
 }
 
 .teste {
-    width: 100%;
+    height: 10vh;
     color: white;
-    font-size: 4ch;
-    font-weight: bold;
-    background-color: #00EA83;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5%;
-}
-
-.teste:hover {
-    transform: scale(1.1);
-    transition: transform 0.5s ease;
 }
 
 
-  
+
