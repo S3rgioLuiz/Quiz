@@ -108,4 +108,131 @@ function selecionarCodigoUsuario($conexao, $array){
     }  
 }
 
+#AMIZADE
+function selecionarApelidoUsuarioValido($conexao, $array){
+    try
+    {
+        $query = $conexao->prepare("SELECT * FROM usuario WHERE upper(apelido)=? AND status=1");
+        if($query->execute($array)){
+            $usuario = $query->fetch(PDO::FETCH_ASSOC);
+            return $usuario;
+        }
+        else {
+            return false;
+        }
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
+#AMIZADE
+function amizadeExistente($conexao, $array){
+    try
+    {
+        $query = $conexao->prepare("SELECT * FROM amizade WHERE (remetente=? AND destinatario=?) OR (destinatario=? AND remetente=?)");
+        if($query->execute($array)){
+            $amizade = $query->fetch(PDO::FETCH_ASSOC);
+            return $amizade;
+        }
+        else {
+            return false;
+        }
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
+#AMIZADE
+function adicionarAmigo($conexao, $array){
+    try
+    {
+        $query = $conexao->prepare("INSERT INTO amizade(remetente, destinatario) 
+        VALUES(?,?)");
+        $resultado = $query->execute($array);
+        return $resultado;
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
+}
+
+#AMIZADE
+function selecionarAmigos($conexao, $array){
+    try
+    {
+        $query = $conexao->prepare("SELECT usuario.codigo, usuario.apelido 
+        FROM usuario WHERE usuario.codigo IN (
+        SELECT amizade.destinatario FROM amizade 
+        WHERE amizade.remetente=? AND amizade.status=1
+        UNION
+        SELECT amizade.remetente FROM amizade 
+        WHERE amizade.destinatario=? AND amizade.status=1)
+        ORDER BY usuario.nome");
+        $query->execute($array);
+        $amigos = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $amigos;
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
+#AMIZADE
+function convitesRecebidos($conexao, $array){
+    try
+    {
+        $query = $conexao->prepare("SELECT usuario.codigo, usuario.apelido 
+        FROM usuario JOIN amizade ON (amizade.remetente = usuario.codigo) 
+        WHERE amizade.destinatario = ? AND amizade.status=0");
+        $query->execute($array);
+        $convites = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $convites;
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
+#AMIZADE
+function aceitarConviteAmizade($conexao, $array){
+    try {
+        $query = $conexao->prepare("UPDATE amizade set status = 1 
+        WHERE remetente = ? AND destinatario = ?");
+        $resultado = $query->execute($array);       
+        return $resultado;
+    }catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
+}
+
+#AMIZADE
+function recusarConviteAmizade($conexao, $array){
+    try
+    {
+        $query = $conexao->prepare("DELETE FROM amizade 
+        WHERE remetente = ? AND destinatario = ?");
+        $resultado = $query->execute($array);
+        return $resultado;
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
+#AMIZADE
+function excluirAmigo($conexao, $array){
+    try
+    {
+        $query = $conexao->prepare("DELETE FROM amizade 
+        WHERE (remetente=? AND destinatario=?) OR (destinatario=? AND remetente=?)");
+        $resultado = $query->execute($array);
+        return $resultado;
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
 ?>

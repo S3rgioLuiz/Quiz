@@ -176,9 +176,11 @@ a {
 .usuarios {
     height: 65vh;
     overflow: auto;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+}
+
+.usuarios::-webkit-scrollbar {
+    width: 1%; 
+    height: 1vh; 
 }
 
 .lista, .usuarios {
@@ -186,10 +188,48 @@ a {
     background-color: rgba(30, 29, 29, 0.8);
 }
 
-.teste {
-    height: 10vh;
+.amigo {
     color: white;
+    font-weight: bolder;
 }
+
+.linha {
+    margin-top: 3vh;
+}
+
+.apelido {
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.aceitar {
+    background-color: #00EA83;
+}
+
+.recusar, .excluir {
+    background-color: #DF4E4E;
+}
+
+.desafiar {
+    background-color: #7D5B9F;
+}
+
+.aceitar, .recusar, .desafiar, .excluir {
+    color: white;
+    font-weight: bolder;
+    height: 7vh;
+    width: 100%;
+    border: 0;
+}
+
+p {
+    margin-top: 3vh;
+}
+
+
+
 
 
 

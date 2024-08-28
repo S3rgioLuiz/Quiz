@@ -125,5 +125,70 @@ if(isset($_POST['sair'])){
     header('location:../../index.php');
 }
 
+////********* ADICIONAR AMIGO *********
+if(isset($_POST['adicionar'])){
+   
+    $array = array($_POST['apelido']);
+    $apelido = selecionarApelidoUsuarioValido($conexao, $array);
+
+    if($apelido){
+        if($apelido['codigo'] != $_SESSION['codigo']){
+            $array = array($_SESSION['codigo'], $apelido['codigo'], $_SESSION['codigo'], $apelido['codigo']);
+            $verifica = amizadeExistente($conexao, $array);
+
+            if($verifica){
+                if($verifica['status'] == 1){
+                    $_SESSION['aviso'] = "Vocês Já são Amigos!";
+                } else if($verifica['remetente'] == $_SESSION['codigo']){
+                    $_SESSION['aviso'] = "Você já Mandou Convite! Aguarde a Resposta!";
+                } else if($verifica['destinatario'] == $_SESSION['codigo']){
+                    $_SESSION['aviso'] = $apelido['apelido']." Já Enviou Convite para Você!";
+                }
+            } else {
+                $array = array($_SESSION['codigo'], $apelido['codigo']);
+                $enviar = adicionarAmigo($conexao, $array);
+
+                if($enviar){
+                    $_SESSION['aviso'] = "Pedido de Amizade Enviado com Sucesso!";
+                } else {
+                    $_SESSION['aviso'] = "Erro ao Enviar Pedido! Repita o Procedimento!";
+                }
+            }
+        } else {
+            $_SESSION['aviso'] = "Apelido Inválido!";
+        }
+
+    } else {
+        $_SESSION['aviso'] = "Apelido Inexistente!";
+    }
+    header("Location:../../amizade.php");
+}
+
+if(isset($_POST['aceitar'])) {
+
+    $array = array($_POST['codigo'], $_SESSION['codigo']);
+    $aceitar = aceitarConviteAmizade($conexao, $array);
+
+    $_SESSION['aviso'] = $aceitar ? "Convite Aceito com Sucesso!" : "ERRO: Repita o Procedimento!";
+    header("Location:../../amizade.php");
+}
+
+if(isset($_POST['recusar'])) {
+
+    $array = array($_POST['codigo'], $_SESSION['codigo']);
+    $recusar = recusarConviteAmizade($conexao, $array);
+
+    $_SESSION['aviso'] = $recusar ? "Convite Recusado!" : "ERRO: Repita o Procedimento!";
+    header("Location:../../amizade.php");
+}
+
+if(isset($_POST['excluir'])){
+    $array = array($_POST['codigo'], $_SESSION['codigo'], $_POST['codigo'], $_SESSION['codigo']);
+    $excluir = excluirAmigo($conexao, $array);
+
+
+    $_SESSION['aviso'] = $excluir ? $_POST['apelido']." Foi Excluído!" : "ERRO! Repita o Procedimento.";
+    header("Location:../../amizade.php");
+}
 
 ?>

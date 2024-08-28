@@ -49,7 +49,15 @@ function listaAmigos(event) {
 
     amigos.classList.remove("small");
     pendentes.classList.add("small");
+
+    carregarAmigosConteudo();
+
+
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    carregarAmigosConteudo();
+});
 
 
 function convitesPendentes(event) {
@@ -58,6 +66,46 @@ function convitesPendentes(event) {
 
     pendentes.classList.remove("small");
     amigos.classList.add("small");
+
+    carregarPendentesConteudo()
+}
+
+function carregarAmigosConteudo() {
+   
+    const ajax = new XMLHttpRequest();
+    ajax.open('GET', 'amigos.php');
+    ajax.send();
+    
+    ajax.addEventListener('load', function() {
+        if (this.status === 200 && this.readyState === 4) {
+            // Seleciona a div onde o conteúdo será carregado
+            const usuariosContainer = document.querySelector(".row.usuarios");
+            if (usuariosContainer) {
+                usuariosContainer.innerHTML = this.responseText;
+            }
+        } else {
+            console.error('Erro ao carregar amigos.php:', this.status);
+        }
+    });
+}
+
+function carregarPendentesConteudo() {
+   
+    const ajax = new XMLHttpRequest();
+    ajax.open('GET', 'pendentes.php');
+    ajax.send();
+    
+    ajax.addEventListener('load', function() {
+        if (this.status === 200 && this.readyState === 4) {
+            // Seleciona a div onde o conteúdo será carregado
+            const usuariosContainer = document.querySelector(".row.usuarios");
+            if (usuariosContainer) {
+                usuariosContainer.innerHTML = this.responseText;
+            }
+        } else {
+            console.error('Erro ao carregar amigos.php:', this.status);
+        }
+    });
 }
 
 

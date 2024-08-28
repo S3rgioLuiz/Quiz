@@ -60,23 +60,16 @@
                     </div>
                     <div class="row lista">
                         <div class="col-9">
-                            <div class="lamigos small">
+                            <div class="lamigos">
                                 <span> LISTA DE AMIGOS </span>
                             </div>
-                            <div class="lpendentes">
-                                <span> CONVITES PENDENTES </span>
+                            <div class="lpendentes small">
+                                <span> CONVITES DE AMIZADE </span>
                             </div>
                         </div>
                     </div>
-                    <div class="row usuarios">
-                        <div class="col-9 teste">1</div>
-                        <div class="col-9 teste">2</div>
-                        <div class="col-9 teste">3</div>
-                        <div class="col-9 teste">4</div>
-                        <div class="col-9 teste">5</div>
-                        <div class="col-9 teste">6</div>
-                        <div class="col-9 teste">7</div>
-                        <div class="col-9 teste">9</div>
+                    <div class="row justify-content-center usuarios">
+                        
                     </div>
                 </div>
             </div>
