@@ -89,7 +89,7 @@ a {
 }
 
 .adicionar {
-    height: 19vh;
+    height: 20vh;
 }
 
 .col-7.align-self-center .input{
@@ -106,7 +106,7 @@ a {
 }
 
 .col-7.align-self-center button {
-    width: 22%;
+    width: 23.5%;
     height: 8vh;
     border: 2px #034435 solid;
     background-color: #034435;
@@ -117,14 +117,10 @@ a {
     font-weight: bold;
 }
 
-.lista {
+.lista .col-12{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.lista .col-9 {
-    display: flex;
 }
 
 .lamigos {
@@ -173,9 +169,11 @@ a {
     margin-top: 3vh;
 }
 
+
 .usuarios {
     height: 65vh;
-    overflow: auto;
+    overflow: scroll;
+    display: flex;
 }
 
 .usuarios::-webkit-scrollbar {
@@ -184,20 +182,13 @@ a {
 }
 
 .lista, .usuarios {
-    width: 100%;
     background-color: rgba(30, 29, 29, 0.8);
 }
 
-.amigo {
+.apelido {
     color: white;
     font-weight: bolder;
-}
-
-.linha {
-    margin-top: 3vh;
-}
-
-.apelido {
+    font-size: 2.5ch;
     height: 7vh;
     display: flex;
     align-items: center;
@@ -224,10 +215,14 @@ a {
     border: 0;
 }
 
-p {
-    margin-top: 3vh;
+.possui {
+    color: white;
 }
 
+.usuarios .col-4,
+.usuarios .possui {
+    margin-top: 3vh;
+}
 
 
 

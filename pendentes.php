@@ -6,10 +6,10 @@ session_start();
 $array = array($_SESSION['codigo']); 
 $amigos = convitesRecebidos($conexao, $array); ?>
 
-<div class="col-9 amigo">
+<div class="col-12">
     <?php if(!empty($amigos)) { 
         foreach($amigos as $amigo ) { ?>
-           <div class="row justify-content-center linha">
+            <div class="row">
                 <div class="col-4">
                     <div class="apelido"> <?php echo $amigo['apelido']; ?> </div>
                 </div>
@@ -25,10 +25,10 @@ $amigos = convitesRecebidos($conexao, $array); ?>
                         <button type="submit" name="recusar" class="recusar"> RECUSAR </button>
                     </form>
                 </div>
-            </div>    
+            </div>  
     <?php } 
     } else { ?>
-        <p> Não Possui Convites Pendentes. </p>
+        <div class="col-12 possui"> Não Possui Convites Pendentes. </div>
     <?php } ?>
 </div>
 

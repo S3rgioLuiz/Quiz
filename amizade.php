@@ -40,36 +40,40 @@
                     </div>
                 </div>
                 <div class="col-10">
-                    <div class="row justify-content-center adicionar">
-                        <div class="col-5 align-self-center">
-                            <p id="aviso">
-                            <?php
-                                if(isset($_SESSION['aviso'])){ 
-                                    echo $_SESSION['aviso'];
-                                    unset($_SESSION['aviso']);
-                                }
-                            ?>
-                            </p>
-                        </div>
-                        <div class="col-7 align-self-center">
-                            <form method="post" action="includes/logica/logica.php">
-                                <input type="text" id="input" class="input" name="apelido" placeholder="DIGITE O APELIDO">
-                                <button type="submit" name="adicionar" id="adicionar"><img src="imagens/adicionar.svg"></button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="row lista">
-                        <div class="col-9">
-                            <div class="lamigos">
-                                <span> LISTA DE AMIGOS </span>
+                    <div class="row justify-content-center">
+                        <div class="col-10">
+                            <div class="row justify-content-center adicionar">
+                                <div class="col-5 align-self-center">
+                                    <p id="aviso">
+                                    <?php
+                                        if(isset($_SESSION['aviso'])){ 
+                                            echo $_SESSION['aviso'];
+                                            unset($_SESSION['aviso']);
+                                        }
+                                    ?>
+                                    </p>
+                                </div>
+                                <div class="col-7 align-self-center">
+                                    <form method="post" action="includes/logica/logica.php">
+                                        <input type="text" id="input" class="input" name="apelido" placeholder="DIGITE O APELIDO">
+                                        <button type="submit" name="adicionar" id="adicionar"><img src="imagens/adicionar.svg"></button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="lpendentes small">
-                                <span> CONVITES DE AMIZADE </span>
+                            <div class="row justify-content-center lista">
+                                <div class="col-12">
+                                    <div class="lamigos">
+                                        <span> LISTA DE AMIGOS </span>
+                                    </div>
+                                    <div class="lpendentes small">
+                                        <span> CONVITES DE AMIZADE </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row usuarios">
+
                             </div>
                         </div>
-                    </div>
-                    <div class="row justify-content-center usuarios">
-                        
                     </div>
                 </div>
             </div>

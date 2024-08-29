@@ -6,10 +6,10 @@ session_start();
 $array = array($_SESSION['codigo'], $_SESSION['codigo']); 
 $amigos = selecionarAmigos($conexao, $array); ?>
 
-<div class="col-9 amigo">
+<div class="col-12">
     <?php if(!empty($amigos)) { 
         foreach($amigos as $amigo ) { ?>
-            <div class="row justify-content-center linha">
+            <div class="row">
                 <div class="col-4">
                     <div class="apelido"> <?php echo $amigo['apelido']; ?> </div>
                 </div>
@@ -27,8 +27,8 @@ $amigos = selecionarAmigos($conexao, $array); ?>
                     </form>
                 </div>
             </div>
-    <?php } 
+        <?php } 
     } else { ?>
-        <p> Não Possui Amigos. </p>
+        <div class="col-12 possui"> Não Possui Amigos. </div>
     <?php } ?>
 </div>
