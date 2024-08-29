@@ -164,6 +164,7 @@ if(isset($_POST['adicionar'])){
     header("Location:../../amizade.php");
 }
 
+//********* ACEITAR AMIZADE *********
 if(isset($_POST['aceitar'])) {
 
     $array = array($_POST['codigo'], $_SESSION['codigo']);
@@ -173,6 +174,7 @@ if(isset($_POST['aceitar'])) {
     header("Location:../../amizade.php");
 }
 
+//********* RECUSAR AMIZADE *********
 if(isset($_POST['recusar'])) {
 
     $array = array($_POST['codigo'], $_SESSION['codigo']);
@@ -182,6 +184,7 @@ if(isset($_POST['recusar'])) {
     header("Location:../../amizade.php");
 }
 
+//********* EXCLUIR AMIZADE *********
 if(isset($_POST['excluir'])){
     $array = array($_POST['codigo'], $_SESSION['codigo'], $_POST['codigo'], $_SESSION['codigo']);
     $excluir = excluirAmigo($conexao, $array);
