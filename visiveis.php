@@ -17,9 +17,9 @@
             <div class="descricao"> <?php echo $modulo['descricao']; ?> </div>
         </div>
         <div class="botao">
-            <form method="post" action="modulo.php">        
+            <form method="post" action="includes/logica/logica.php">        
                 <input type="hidden" name="codigo" value="<?php echo $modulo["codigo"]; ?>">
-                <button type="submit" name="modulo" value="editar" class="editar"> EDITAR </button>
+                <button type="submit" name="acessar" value="modulo" class="editar"> EDITAR </button>
             </form>
         </div>
     </div>

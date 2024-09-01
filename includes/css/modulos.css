@@ -185,11 +185,17 @@ a {
 }
 
 .moduloo .infos {
-    border: 1ch solid #969696;
+    box-sizing: border-box;
+    border: 1ch solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(45deg, #55BF91, #969696);
 }
 
 .modulov .infos {
-    border: 1ch solid #078063;
+    box-sizing: border-box;
+    border: 1ch solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(45deg, #55BF91, #00EA83);
 }
 
 .infos {
@@ -208,7 +214,7 @@ a {
 
 .infos .foto img {
     height: 20vh;
-    max-width: 98%;
+    max-width: 95%;
 }
 
 .infos .descricao {

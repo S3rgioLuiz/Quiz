@@ -264,18 +264,20 @@ function selecionarModulosVisiveis($conexao){
 }
 
 #MODULOS
-function adicionarModulo($conexao, $array){
-    try
-    {
-        $query = $conexao->prepare("INSERT INTO modulo(nome, foto, descricao) 
-        VALUES(?,?,?)");
+function adicionarModulo($conexao, $array) {
+    try {
+        $query = $conexao->prepare("INSERT INTO modulo(nome, foto, descricao) VALUES(?,?,?)");
         $resultado = $query->execute($array);
-        return $resultado;
-    }
-    catch(PDOException $e) {
+        if ($resultado) {
+            return $conexao->lastInsertId();
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
         echo 'Error: ' . $e->getMessage();
     }
 }
+
 
 #MODULOS #CONFIGURACAO
 function selecionarConfiguracao($conexao, $array){

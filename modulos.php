@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-3">
                             <form method="post" action="modulo.php">
-                                <button type="submit" class="botao" name="modulo" value="adicionar"> 
+                                <button type="submit" class="botao"> 
                                     ADICIONAR </button>
                             </form>
                         </div>

@@ -213,9 +213,27 @@ if(isset($_POST['modulo'])){
         move_uploaded_file($arquivo_temporario, "../../imagens/$nome_arquivo");
 
         $adicionar = adicionarModulo($conexao, $array);
-       
-        $_SESSION["aviso"] = "Módulo Criado com Sucesso!";
-        header("Location:../../modulos.php");
+        if($adicionar) {
+            $_SESSION["modulo"] = $adicionar;
+            header("Location:../../configuracao.php");
+            $_SESSION["aviso1"] = "Módulo Criado com Sucesso!";
+        } else {
+            header("Location:../../modulo.php");
+            $_SESSION["aviso1"] = "ERRO - Repita o Procedimento.";
+        }
+    }
+    //****** EDITAR ****** 
+    else if($_POST['modulo'] == "editar") {
+        
+    }
+}
+
+//********* ACESSAR *********
+if(isset($_POST["acessar"])) {
+    //****** MÓDULO ****** 
+    if($_POST["acessar"] == "modulo"){
+        $_SESSION["modulo"] = $_POST["codigo"];
+        header("Location:../../configuracao.php");
     }
 }
 
