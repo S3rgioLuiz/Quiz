@@ -277,4 +277,40 @@ function adicionarModulo($conexao, $array){
     }
 }
 
+#MODULOS #CONFIGURACAO
+function selecionarConfiguracao($conexao, $array){
+    try
+    {
+        $query = $conexao->prepare("SELECT * FROM configuracao WHERE codigo_modulo=?");
+        if($query->execute($array)){
+            $configuracao = $query->fetch(PDO::FETCH_ASSOC);
+            return $configuracao;
+        }
+        else {
+            return false;
+        }
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
+#MODULOS
+function selecionarModuloPorCodigo($conexao, $array){
+    try
+    {
+        $query = $conexao->prepare("SELECT * FROM modulo WHERE codigo=?");
+        if($query->execute($array)){
+            $modulo = $query->fetch(PDO::FETCH_ASSOC);
+            return $modulo;
+        }
+        else {
+            return false;
+        }
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
 ?>

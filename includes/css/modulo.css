@@ -105,7 +105,7 @@ a {
     margin-bottom: 2vh;
 }
 
-.nome1 {
+.nome1, .nome2 {
     background-color: transparent;
     border: 2px #00EA83 solid;
     width: 100%;
@@ -115,7 +115,8 @@ a {
     margin-bottom: 2vh;
 }
 
-.nome1.invalid {
+.nome1.invalid,
+.nome2.invalid {
     background-color: transparent;
     border: 2px red solid;
     width: 100%;
@@ -126,11 +127,13 @@ a {
 }
 
 .nome1::placeholder,
-.descricao1::placeholder {
+.descricao1::placeholder,
+.nome2::placeholder,
+.descricao2::placeholder {
     text-align: center;
 }
 
-.descricao1 {
+.descricao1, .descricao2 {
     background-color: transparent;
     border: 2px #00EA83 solid;
     width: 100%;
@@ -141,7 +144,8 @@ a {
     margin-top: 2vh;
 }
 
-.descricao1.invalid {
+.descricao1.invalid,
+.descricao2.invalid {
     background-color: transparent;
     border: 2px red solid;
     width: 100%;
@@ -152,12 +156,13 @@ a {
     margin-top: 2vh;
 }
 
-.descricao1::-webkit-scrollbar {
+.descricao1::-webkit-scrollbar,
+.descricao2::-webkit-scrollbar {
     width: 1px; 
     height: 1px; 
 }
 
-.adicionar {
+.adicionar, .editar {
     background-color: #00EA83;
     color: white;
     font-weight: bolder;
@@ -166,7 +171,7 @@ a {
     margin-bottom: 2vh;
 }
 
-.arquivo1 {
+.arquivo1, .arquivo2 {
     display: none;
 }
 
@@ -196,4 +201,9 @@ a {
     color: white;
     font-weight: bolder;
     text-align: center;
+}
+
+.foto  img{
+    height: 20vh;
+    max-width: 98%;
 }
