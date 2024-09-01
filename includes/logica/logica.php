@@ -196,7 +196,6 @@ if(isset($_POST['excluir'])){
 
 //********* MÓDULO *********
 if(isset($_POST['modulo'])){
-    //'jpg', 'jpeg', 'png', 'svg'
     //****** ADICIONAR ****** 
     if($_POST['modulo'] == "adicionar"){
 

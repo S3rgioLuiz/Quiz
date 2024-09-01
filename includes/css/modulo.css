@@ -105,7 +105,7 @@ a {
     margin-bottom: 2vh;
 }
 
-.nome {
+.nome1 {
     background-color: transparent;
     border: 2px #00EA83 solid;
     width: 100%;
@@ -115,12 +115,22 @@ a {
     margin-bottom: 2vh;
 }
 
-.nome::placeholder,
-.descricao::placeholder {
+.nome1.invalid {
+    background-color: transparent;
+    border: 2px red solid;
+    width: 100%;
+    height: 8vh;
+    color: #bbbbbb;
+    font-weight: bolder;
+    margin-bottom: 2vh;
+}
+
+.nome1::placeholder,
+.descricao1::placeholder {
     text-align: center;
 }
 
-.descricao {
+.descricao1 {
     background-color: transparent;
     border: 2px #00EA83 solid;
     width: 100%;
@@ -131,7 +141,18 @@ a {
     margin-top: 2vh;
 }
 
-.descricao::-webkit-scrollbar {
+.descricao1.invalid {
+    background-color: transparent;
+    border: 2px red solid;
+    width: 100%;
+    height: 16vh;
+    color: #bbbbbb;
+    font-weight: bolder;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+
+.descricao1::-webkit-scrollbar {
     width: 1px; 
     height: 1px; 
 }
@@ -152,6 +173,17 @@ a {
 .arquivo-label {
     display: inline-block;
     background-color: #034435; 
+    color: white; 
+    font-weight: bolder;
+    width: 50%;
+    border-radius: 1%;
+    cursor: pointer;
+    text-align: center;
+}
+
+.arquivo-label.invalid {
+    display: inline-block;
+    background-color: red; 
     color: white; 
     font-weight: bolder;
     width: 50%;

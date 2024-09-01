@@ -69,12 +69,12 @@
                         <div class="col-6 align-self-center">
                             <div class="titulo"> MÓDULO </div>
                             <form method="post" action="includes/logica/logica.php" enctype="multipart/form-data">
-                                <input type="text" name="nome" class="nome" placeholder="DIGITE O NOME">
+                                <input type="text" name="nome" class="nome1" placeholder="DIGITE O NOME">
                                 <label for="arquivo1" class="arquivo-label">Escolher Foto</label>
                                 <input type="file" name="arquivo" id="arquivo1" class="arquivo1">
                                 <textarea maxlength="255" rows="5" cols="40" 
                                     placeholder="DIGITE A DESCRIÇÃO"
-                                    name="descricao" class="descricao"></textarea>
+                                    name="descricao" class="descricao1"></textarea>
                                 <button type="submit" class="adicionar" name="modulo" value="adicionar"> ADICIONAR </button>
                             </form>
                             <div class="aviso">
