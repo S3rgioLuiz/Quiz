@@ -71,12 +71,20 @@
                             <form method="post" action="includes/logica/logica.php" enctype="multipart/form-data">
                                 <input type="text" name="nome" class="nome" placeholder="DIGITE O NOME">
                                 <label for="arquivo" class="arquivo-label">Escolher Foto</label>
-                                <input type="file" name="arquivo" id="arquivo" class="arquivo">
+                                <input type="file" name="arquivo" id="arquivo1" class="arquivo1">
                                 <textarea maxlength="255" rows="5" cols="40" 
                                     placeholder="DIGITE A DESCRIÇÃO"
                                     name="descricao" class="descricao"></textarea>
-                                <button type="submit" class="adicionar" name="adicionar" value="modulo"> ADICIONAR </button>
+                                <button type="submit" class="adicionar" name="modulo" value="adicionar"> ADICIONAR </button>
                             </form>
+                            <div class="aviso">
+                            <?php
+                                if(isset($_SESSION['aviso1'])){ 
+                                    echo $_SESSION['aviso1'];
+                                    unset($_SESSION['aviso1']);
+                                }
+                            ?>
+                            </div>
                         </div>
                     </div>
 

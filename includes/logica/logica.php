@@ -194,4 +194,24 @@ if(isset($_POST['excluir'])){
     header("Location:../../amizade.php");
 }
 
+//********* MÓDULO *********
+if(isset($_POST['modulo'])){
+    //****** ADICIONAR ****** 
+    if($_POST['modulo'] == "adicionar"){
+        $nome_arquivo=$_FILES['arquivo']['name'];  
+        $tamanho_arquivo=$_FILES['arquivo']['size']; 
+        $arquivo_temporario=$_FILES['arquivo']['tmp_name'];
+        $array = array($_POST['nome'], $_POST['arquivo'], $_POST['descricao']);
+        move_uploaded_file($arquivo_temporario, "../../imagens/$nome_arquivo");
+        $adicionar = adicionarModulo($conexao, $array);
+        if($adicionar){
+            $_SESSION["aviso"] = "Módulo Criado com Sucesso!";
+            header("Location:../../modulos.php");
+        } else {
+            $_SESSION["aviso1"] = "ERRO - Repita o Procedimento.";
+            header("Location:../../modulo.php");
+        }
+    }
+}
+
 ?>
