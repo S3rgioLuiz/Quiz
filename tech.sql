@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20-Ago-2024 às 03:28
+-- Tempo de geração: 01-Set-2024 às 04:41
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -47,6 +47,15 @@ CREATE TABLE `amizade` (
   `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `amizade`
+--
+
+INSERT INTO `amizade` (`codigo`, `remetente`, `destinatario`, `status`) VALUES
+(8, 11, 12, 1),
+(9, 11, 10, 1),
+(10, 12, 10, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -79,6 +88,13 @@ CREATE TABLE `modulo` (
   `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `modulo`
+--
+
+INSERT INTO `modulo` (`codigo`, `nome`, `foto`, `descricao`, `status`) VALUES
+(1, 'Nenhum', 'nenhum.svg', 'QUESTÕES NÃO CADASTRADAS EM MÓDULOS.', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -107,18 +123,6 @@ CREATE TABLE `questionario` (
   `codigo_teste` int(11) NOT NULL,
   `codigo_questao` int(11) NOT NULL,
   `codigo_resposta` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `requisito`
---
-
-CREATE TABLE `requisito` (
-  `codigo` int(11) NOT NULL,
-  `codigo_modulo` int(11) NOT NULL,
-  `requisito` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -154,6 +158,16 @@ CREATE TABLE `usuario` (
   `status` int(11) NOT NULL DEFAULT 0,
   `chave` varchar(255) NOT NULL DEFAULT 'NULL'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`codigo`, `apelido`, `nome`, `email`, `foto`, `pontuacao`, `senha`, `dificuldade`, `status`, `chave`) VALUES
+(9, 'Sergio', 'Sérgio Luiz Ramires do Rosário', 'sergiorosario.pl012@academico.ifsul.edu.br', 'Foto.svg', 0, '$2y$10$Udmh0b8Dgnex5TrYV3c0z.YALMsFnLNN3wiZePn7n6uWr.K8oIMVC', 1, 2, 'NULL'),
+(10, 'Paulo', 'Paulo Ricardo Pereira da Silva', 'shicoca2@gmail.com', 'Foto.svg', 0, '$2y$10$L5NPw0oQTH23iyAd.wfqhu9buEJQBgAs10qY3VVMKBOyAkDXi8ZDi', 1, 1, 'NULL'),
+(11, 'Luiz', 'Luiz Pereira Santos', 'sergio.ramires.rosario@gmail.com', 'Foto.svg', 0, '$2y$10$4p/cJxSB./YEmgx5VfFqzOJfCpl2S./pJ/1bN83WKedypzU.EMaTy', 1, 1, 'NULL'),
+(12, 'Squirtle', 'Mario Henrique Silva', 'sergio.luiz.rosario@gmail.com', 'Foto.svg', 0, '$2y$10$dO7foFCgLWH18ebdkAMfuuVbA.RySmOW4Pkjc4kSnom/Fvt5OmOjK', 1, 1, 'NULL');
 
 --
 -- Índices para tabelas despejadas
@@ -204,14 +218,6 @@ ALTER TABLE `questionario`
   ADD KEY `verificacao` (`codigo_resposta`);
 
 --
--- Índices para tabela `requisito`
---
-ALTER TABLE `requisito`
-  ADD PRIMARY KEY (`codigo`),
-  ADD KEY `acessar` (`codigo_modulo`),
-  ADD KEY `acesso` (`requisito`);
-
---
 -- Índices para tabela `teste`
 --
 ALTER TABLE `teste`
@@ -239,7 +245,7 @@ ALTER TABLE `alternativa`
 -- AUTO_INCREMENT de tabela `amizade`
 --
 ALTER TABLE `amizade`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `configuracao`
@@ -251,7 +257,7 @@ ALTER TABLE `configuracao`
 -- AUTO_INCREMENT de tabela `modulo`
 --
 ALTER TABLE `modulo`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `questao`
@@ -266,12 +272,6 @@ ALTER TABLE `questionario`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `requisito`
---
-ALTER TABLE `requisito`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `teste`
 --
 ALTER TABLE `teste`
@@ -281,7 +281,7 @@ ALTER TABLE `teste`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restrições para despejos de tabelas
@@ -319,13 +319,6 @@ ALTER TABLE `questionario`
   ADD CONSTRAINT `avaliacao` FOREIGN KEY (`codigo_teste`) REFERENCES `teste` (`codigo`),
   ADD CONSTRAINT `exame` FOREIGN KEY (`codigo_questao`) REFERENCES `questao` (`codigo`),
   ADD CONSTRAINT `verificacao` FOREIGN KEY (`codigo_resposta`) REFERENCES `alternativa` (`codigo`);
-
---
--- Limitadores para a tabela `requisito`
---
-ALTER TABLE `requisito`
-  ADD CONSTRAINT `acessar` FOREIGN KEY (`codigo_modulo`) REFERENCES `modulo` (`codigo`),
-  ADD CONSTRAINT `acesso` FOREIGN KEY (`requisito`) REFERENCES `modulo` (`codigo`);
 
 --
 -- Limitadores para a tabela `teste`
