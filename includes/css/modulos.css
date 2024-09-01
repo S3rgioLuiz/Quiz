@@ -1,0 +1,251 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.corpo {
+    background-image: url("../../imagens/background2.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-fluid {
+    padding: 0;
+    overflow: hidden;
+}
+
+.col-2 .menu {
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+}
+
+.logo {
+    width: 100%;
+    height: 19vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.itens {
+    width: 100%;
+    height: 13.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.itens img {
+    margin-right: 5%;
+}
+
+.logo img {
+    height: 18vh;
+}
+
+.col-2 .menu .itens:hover {
+    background-color: #00EA83;
+}
+
+a {
+    text-decoration: none; 
+    color: inherit; 
+    background: none; 
+    border: none; 
+    padding: 0; 
+    margin: 0; 
+  }
+
+.itens.amigos:hover img {
+    content: url('../../imagens/amigos-b.svg'); 
+}
+
+.itens.alertas:hover img {
+    content: url('../../imagens/alertas-b.svg'); 
+}
+
+.itens.desafios:hover img {
+    content: url('../../imagens/desafios-b.svg'); 
+}
+
+.itens.ranking:hover img {
+    content: url('../../imagens/ranking-b.svg'); 
+}
+
+.itens.regras:hover img {
+    content: url('../../imagens/regras-b.svg'); 
+}
+
+.itens.sair:hover img {
+    content: url('../../imagens/sair-b.svg'); 
+}
+
+.itens.painel:hover img {
+    content: url('../../imagens/painel-b.svg'); 
+}
+
+.adicionar {
+    height: 15vh;
+}
+
+.adicionar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.adicionar .col-3 div {
+    border-radius: 5%;
+    background-color: #7D5B9F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.adicionar .col-3 div,
+.adicionar .col-7 #aviso {
+    width: 100%;
+    height: 8vh;
+    color: white;
+    font-weight: bolder;
+}
+
+.lista .col-10{
+    display: flex;
+}
+
+.visivel {
+    width: 80%;
+    height: 8vh;
+    background-color: #00EA83;
+    color: black;
+    font-weight: bolder;
+}
+
+.visivel.small {
+    width: 20%;
+    height: 8vh;
+    background-color: #00EA83;
+    content: url('../../imagens/visivel.svg');
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.oculto {
+    width: 80%;
+    height: 8vh;
+    background-color: black;
+    color: white;
+    font-weight: bolder;
+}
+
+.oculto.small {
+    width: 20%;
+    height: 8vh;
+    background-color: black;
+    content: url('../../imagens/oculto.svg');
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.visivel, .oculto {
+    transition: all 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.row .modulos {
+    height: 74vh;
+    overflow: scroll;
+}
+
+.row .modulos::-webkit-scrollbar {
+    width: 1%; 
+    height: 1vh; 
+}
+
+.moduloo, .modulov {
+    width: 33%;
+}
+
+.moduloo .infos {
+    border: 1ch solid #969696;
+}
+
+.modulov .infos {
+    border: 1ch solid #078063;
+}
+
+.infos {
+    width: 100%;
+    background-color: #111111;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+}
+
+.infos .foto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.infos .foto,
+.infos .foto img {
+    height: 20vh;
+}
+
+.infos .descricao {
+    max-width: 100%;
+    height: 23vh;
+    color: white;
+    font-weight: bolder;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.moduloo form, .modulov form {
+    width: 100%;
+}
+
+.botao {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.editar {
+    color: white;
+    background-color: #00EA83;
+    font-weight: bolder;
+    height: 8vh;
+    width: 50%;
+    border: 0;
+}
+
+.texto {
+    width: 100%;
+    color: white;
+    font-weight: bolder;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}

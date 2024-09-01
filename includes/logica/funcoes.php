@@ -235,4 +235,32 @@ function excluirAmigo($conexao, $array){
     }  
 }
 
+#MODULOS
+function selecionarModulosOcultos($conexao){
+    try
+    {
+        $query = $conexao->prepare("SELECT codigo, foto, descricao FROM modulo WHERE status=0");
+        $query->execute();
+        $modulos = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $modulos;
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
+#MODULOS
+function selecionarModulosVisiveis($conexao){
+    try
+    {
+        $query = $conexao->prepare("SELECT codigo, foto, descricao FROM modulo WHERE status=1");
+        $query->execute();
+        $modulos = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $modulos;
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
 ?>
