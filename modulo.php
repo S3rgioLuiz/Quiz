@@ -4,7 +4,7 @@
     require_once("includes/logica/conecta.php");
     session_start();
 
-    if(!$_SESSION['logado'])
+    if(!($_SESSION['logado'] && $_SESSION['identificacao'] != "comum"))
         header("Location:index.php");
 
 ?>
@@ -63,21 +63,21 @@
                 <div class="col-10 sessao">
 
                     <?php 
-                    if(!isset($_SESSION["modulo"])) { ?>
+                    if($_POST["modulo"] == "adicionar") { ?>
                     
                     <div class="row justify-content-center modulo">
                         <div class="col-6">
                             <div class="titulo"> MÓDULO </div>
                             <form method="post" action="includes/logica/logica.php" enctype="multipart/form-data">
-                                <input type="text" name="nome" class="nome" placeholder="Digite o Nome do Módulo">
+                                <input type="text" name="nome" class="nome" placeholder="DIGITE O NOME">
                                 <input type="file" name="arquivo" id="arquivo_f" class="arquivo_f" style="display: none;">
                                 <label for="arquivo_f" class="custom-file-upload">
                                     Escolher Foto
                                 </label>
                                 <textarea maxlength="255" rows="5" cols="40" 
-                                    placeholder="Digite a Descrição do Módulo"
-                                    name="descricao">
-                                </textarea>
+                                    placeholder="DIGITE A DESCRIÇÃO"
+                                    name="descricao" class="descricao"></textarea>
+
                                 <button type="submit" class="adicionar" name="adicionar" value="modulo"> ADICIONAR </button>
                             </form>
                         </div>
