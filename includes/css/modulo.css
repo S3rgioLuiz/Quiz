@@ -94,11 +94,14 @@ a {
 
 .modulo .col-6 {
     background-color: rgba(30, 29, 29, 0.8);
+   text-align: center;
 }
 
 .titulo {
     color: #00EA83;
     font-weight: bolder;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
 }
 
 .nome {
@@ -108,6 +111,7 @@ a {
     height: 8vh;
     color: #bbbbbb;
     font-weight: bolder;
+    margin-bottom: 2vh;
 }
 
 .nome::placeholder,
@@ -122,4 +126,35 @@ a {
     height: 16vh;
     color: #bbbbbb;
     font-weight: bolder;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+
+.descricao::-webkit-scrollbar {
+    width: 1px; 
+    height: 1px; 
+}
+
+.adicionar {
+    background-color: #00EA83;
+    color: white;
+    font-weight: bolder;
+    width: 60%;
+    height: 8vh;
+    margin-bottom: 2vh;
+}
+
+.arquivo {
+    display: none;
+}
+
+.arquivo-label {
+    display: inline-block;
+    background-color: #034435; 
+    color: white; 
+    font-weight: bolder;
+    width: 50%;
+    border-radius: 1%;
+    cursor: pointer;
+    text-align: center;
 }

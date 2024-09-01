@@ -60,24 +60,21 @@
                     <?php } ?>  
                     </div>
                 </div>
-                <div class="col-10 sessao">
+                <div class="col-10 align-self-center sessao">
 
                     <?php 
                     if($_POST["modulo"] == "adicionar") { ?>
                     
                     <div class="row justify-content-center modulo">
-                        <div class="col-6">
+                        <div class="col-6 align-self-center">
                             <div class="titulo"> MÓDULO </div>
                             <form method="post" action="includes/logica/logica.php" enctype="multipart/form-data">
                                 <input type="text" name="nome" class="nome" placeholder="DIGITE O NOME">
-                                <input type="file" name="arquivo" id="arquivo_f" class="arquivo_f" style="display: none;">
-                                <label for="arquivo_f" class="custom-file-upload">
-                                    Escolher Foto
-                                </label>
+                                <label for="arquivo" class="arquivo-label">Escolher Foto</label>
+                                <input type="file" name="arquivo" id="arquivo" class="arquivo">
                                 <textarea maxlength="255" rows="5" cols="40" 
                                     placeholder="DIGITE A DESCRIÇÃO"
                                     name="descricao" class="descricao"></textarea>
-
                                 <button type="submit" class="adicionar" name="adicionar" value="modulo"> ADICIONAR </button>
                             </form>
                         </div>
