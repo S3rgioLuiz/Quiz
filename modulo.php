@@ -70,7 +70,7 @@
                             <div class="titulo"> MÓDULO </div>
                             <form method="post" action="includes/logica/logica.php" enctype="multipart/form-data">
                                 <input type="text" name="nome" class="nome" placeholder="DIGITE O NOME">
-                                <label for="arquivo" class="arquivo-label">Escolher Foto</label>
+                                <label for="arquivo1" class="arquivo-label">Escolher Foto</label>
                                 <input type="file" name="arquivo" id="arquivo1" class="arquivo1">
                                 <textarea maxlength="255" rows="5" cols="40" 
                                     placeholder="DIGITE A DESCRIÇÃO"

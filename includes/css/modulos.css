@@ -203,11 +203,12 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 25vh;
 }
 
-.infos .foto,
 .infos .foto img {
     height: 20vh;
+    max-width: 98%;
 }
 
 .infos .descricao {
