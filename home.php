@@ -65,7 +65,7 @@
                 <div class="col-10">
                     <div class="row">
                         <div class="col-4 perfil">
-                            <div class="acessar">
+                            <a href="perfil.php"><div class="acessar">
                             <?php
                                 if($usuario['status'] == 2) {
                             ?>
@@ -79,15 +79,17 @@
                                     <?php echo $usuario['apelido']; ?> 
                                     <img src="imagens/editar.svg">
                                 </div>
-                            </div>
+                            </div></a>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-5 align-self-center">
+                        <a href="modulos.php">    
                             <div class="teste"> 
-                                <?php echo $usuario['status'] == 2 ? "CRIAR TESTES" : "INICIAR TESTES" ?> 
+                                    <?php echo $usuario['status'] == 2 ? "CRIAR TESTES" : "INICIAR TESTES" ?> 
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
