@@ -101,27 +101,27 @@
 
                                 <input type="text" name="tempo" class="input" id="tempo"
                                 <?php if(!empty($configuracao)) { ?> value="<?php echo $configuracao["tempo"]; ?> "  
-                                <?php } else { ?> placeholder="TEMPO EM SEGUNDOS" <?php } ?> >
+                                <?php } ?> placeholder="TEMPO EM SEGUNDOS" >
 
                                 <input type="text" name="nivel1" class="input" id="nivel1"
                                 <?php if(!empty($configuracao)) { ?> value="<?php echo $configuracao["nivel_um"]; ?> "  
-                                <?php } else { ?> placeholder="NÍVEL 1" <?php } ?> >
+                                <?php } ?> placeholder="NÍVEL 1" >
 
                                 <input type="text" name="nivel2" class="input" id="nivel2"
                                 <?php if(!empty($configuracao)) { ?> value="<?php echo $configuracao["nivel_dois"]; ?> "  
-                                <?php } else { ?> placeholder="NÍVEL 2" <?php } ?> >
+                                <?php } ?> placeholder="NÍVEL 2" >
 
                                 <input type="text" name="nivel3" class="input" id="nivel3"
                                 <?php if(!empty($configuracao)) { ?> value="<?php echo $configuracao["nivel_tres"]; ?> "  
-                                <?php } else { ?> placeholder="NÍVEL 3" <?php } ?> >
+                                <?php } ?> placeholder="NÍVEL 3">
 
                                 <input type="text" name="nivel4" class="input" id="nivel4"
                                 <?php if(!empty($configuracao)) { ?> value="<?php echo $configuracao["nivel_quatro"]; ?> "  
-                                <?php } else { ?> placeholder="NÍVEL 4" <?php } ?> >
+                                <?php } ?> placeholder="NÍVEL 4">
 
                                 <input type="text" name="nivel5" class="input" id="nivel5"
                                 <?php if(!empty($configuracao)) { ?> value="<?php echo $configuracao["nivel_cinco"]; ?> "  
-                                <?php } else { ?> placeholder="NÍVEL 5" <?php } ?> >
+                                <?php } ?> placeholder="NÍVEL 5">
 
                                 <button type="submit" class="submeter" name="configuracao" 
                                 value="<?php echo !empty($configuracao) ? "editar" : "adicionar"; ?>">
