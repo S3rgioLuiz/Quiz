@@ -33,7 +33,7 @@ if(isset($_POST['cadastrar'])){
                 //$link="<a href='https://8ac6-3-88-200-190.ngrok-free.app/Tech/valida_email/email_cadastro.php?h=".$hash."'> Clique aqui para confirmar seu cadastro </a>";
                 //$link="<a href='https://sergiolrdr.duckdns.org/Tech/valida_email/email_cadastro.php?h=".$hash."'> Clique aqui para confirmar seu cadastro </a>";
                 $link="<a href='localhost/Quiz/valida_email/cadastro.php?h=".$hash."'> Clique aqui para confirmar seu cadastro </a>";
-                $mensagem="<tr><td style='padding: 10px 0 10px 0;' align='center' bgcolor='#669999'>";
+                $mensagem="<tr><td style='padding: 10px 0 10px 0;' align='center' bgcolor='#FFFFFF'>";
                 $mensagem.="<img src='cid:logo_ref' style='display: inline; padding: 0 10px 0 10px;' width='10%' />";
     
                 $mensagem.="Email de Confirmação <br>".$link."</td></tr>";
@@ -86,7 +86,7 @@ if(isset($_POST['recuperar'])){
         //$link="<a href='https://8ac6-3-88-200-190.ngrok-free.app/Tech/valida_email/email_senha.php?h=".$hash."'> Clique aqui para Recuperar Senha </a>";
         //$link="<a href='https://sergiolrdr.duckdns.org/Tech/valida_email/email_senha.php?h=".$hash."'> Clique aqui para Recuperar Senha </a>";
         $link="<a href='localhost/Quiz/valida_email/senha.php?h=".$hash."'> Clique aqui para recuperar sua senha </a>";
-        $mensagem="<tr><td style='padding: 10px 0 10px 0;' align='center' bgcolor='#669999'>";
+        $mensagem="<tr><td style='padding: 10px 0 10px 0;' align='center' bgcolor='#FFFFFF'>";
         $mensagem.="<img src='cid:logo_ref' style='display: inline; padding: 0 10px 0 10px;' width='10%' />";
 
         $mensagem.="Email de Confirmação <br>".$link."</td></tr>";

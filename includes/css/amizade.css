@@ -217,6 +217,10 @@ a {
 
 .possui {
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .usuarios .col-4,
