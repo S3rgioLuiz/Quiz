@@ -84,7 +84,7 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-5 align-self-center">
-                        <a href="modulos.php">    
+                        <a href="<?php echo $_SESSION["identificacao"] == "admin" ? "modulos.php" : "home.php";  ?>">    
                             <div class="teste"> 
                                     <?php echo $usuario['status'] == 2 ? "CRIAR TESTES" : "INICIAR TESTES" ?> 
                                 </div>
