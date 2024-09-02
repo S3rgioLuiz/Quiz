@@ -224,8 +224,43 @@ if(isset($_POST['modulo'])){
     }
     //****** EDITAR ****** 
     else if($_POST['modulo'] == "editar") {
-        
+        $extensao = pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION);
+        if(empty($extensao)){
+            $array = array($_POST["nome"], $_POST["foto"], $_POST["descricao"], $_POST["codigo"]);
+        } else {
+            $uid = uniqid();
+            $nome_arquivo = $uid . '.' . $extensao;
+            $tamanho_arquivo = $_FILES['arquivo']['size']; 
+            $arquivo_temporario = $_FILES['arquivo']['tmp_name'];
+            move_uploaded_file($arquivo_temporario, "../../imagens/$nome_arquivo");
+            $array = array($_POST['nome'], $nome_arquivo, $_POST['descricao'], $_POST["codigo"] );
+        }
+        $editar = editarModulo($conexao, $array);
+        if($editar) {
+            header("Location:../../configuracao.php");
+            $_SESSION["aviso1"] = "Módulo Atualizado com Sucesso!";
+        } else {
+            header("Location:../../configuracao.php");
+            $_SESSION["aviso1"] = "ERRO - Repita o Procedimento.";
+        }
     }
+}
+
+//********* CONFIGURACÃO *********
+if(isset($_POST["configuracao"])){
+    //****** ADICIONAR ******
+    if($_POST["configuracao"] == "adicionar") {
+        $array = array(number_format($_SESSION["modulo"]), number_format($_POST["tempo"]), 
+        number_format($_POST["nivel1"]), number_format($_POST["nivel2"]), number_format($_POST["nivel3"]), 
+        number_format($_POST["nivel4"]), number_format($_POST["nivel5"]));
+        $configuracao = adicionarConfiguracao($conexao, $array);
+        if($configuracao){
+            $_SESSION["aviso2"] = "Configuração Criada com Sucesso!";
+        } else {
+            $_SESSION["aviso2"] = "ERRO - Repita o Procedimento.";
+        }
+        header("Location:../../configuracao.php");
+    } 
 }
 
 //********* ACESSAR *********

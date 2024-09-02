@@ -315,4 +315,30 @@ function selecionarModuloPorCodigo($conexao, $array){
     }  
 }
 
+#MODULOS
+function editarModulo($conexao, $array) {
+    try {
+        $query = $conexao->prepare("UPDATE modulo set nome=?, foto=?, descricao=? 
+        where codigo=?");
+        $resultado = $query->execute($array);       
+        return $resultado;
+    }catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
+}
+
+#MODULOS #CONFIGURAÇÃO
+function adicionarConfiguracao($conexao, $array) {
+    try
+    {
+        $query = $conexao->prepare("INSERT INTO configuracao(codigo_modulo, tempo, nivel_um, nivel_dois, 
+        nivel_tres, nivel_quatro, nivel_cinco) VALUES(?,?,?,?,?,?,?)");
+        $resultado = $query->execute($array);
+        return $resultado;
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
+}
+
 ?>

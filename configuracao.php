@@ -66,6 +66,7 @@
                 <div class="col-10 align-self-center sessao">
                     
                     <div class="row justify-content-center modulo">
+
                         <div class="col-6 align-self-center">
                             <div class="titulo"> MÓDULO </div>
                             <form method="post" action="includes/logica/logica.php" enctype="multipart/form-data">
@@ -80,7 +81,7 @@
                                     name="descricao" class="descricao"><?php echo $modulo["descricao"]; ?></textarea>
                                 <button type="submit" class="editar" name="modulo" value="editar"> EDITAR </button>
                             </form>
-                            <div class="aviso">
+                            <div class="aviso1">
                             <?php
                                 if(isset($_SESSION['aviso1'])){ 
                                     echo $_SESSION['aviso1'];
@@ -89,6 +90,54 @@
                             ?>
                             </div>
                         </div>
+
+                        <div class="col-4 offset-1 align-self-center">
+                            <div class="titulo"> CONFIGURAÇÃO </div>
+                            <form method="post" action="includes/logica/logica.php">
+
+                                <?php if(!empty($configuracao)){ ?>
+                                <input type="hidden" name="codigo" value="<?php echo $configuracao["codigo"]; ?>">
+                                <?php } ?>
+
+                                <input type="text" name="tempo" class="input" id="tempo"
+                                <?php if(!empty($configuracao)) { ?> value="<?php echo $configuracao["tempo"]; ?> "  
+                                <?php } else { ?> placeholder="TEMPO EM SEGUNDOS" <?php } ?> >
+
+                                <input type="text" name="nivel1" class="input" id="nivel1"
+                                <?php if(!empty($configuracao)) { ?> value="<?php echo $configuracao["nivel_um"]; ?> "  
+                                <?php } else { ?> placeholder="NÍVEL 1" <?php } ?> >
+
+                                <input type="text" name="nivel2" class="input" id="nivel2"
+                                <?php if(!empty($configuracao)) { ?> value="<?php echo $configuracao["nivel_dois"]; ?> "  
+                                <?php } else { ?> placeholder="NÍVEL 2" <?php } ?> >
+
+                                <input type="text" name="nivel3" class="input" id="nivel3"
+                                <?php if(!empty($configuracao)) { ?> value="<?php echo $configuracao["nivel_tres"]; ?> "  
+                                <?php } else { ?> placeholder="NÍVEL 3" <?php } ?> >
+
+                                <input type="text" name="nivel4" class="input" id="nivel4"
+                                <?php if(!empty($configuracao)) { ?> value="<?php echo $configuracao["nivel_quatro"]; ?> "  
+                                <?php } else { ?> placeholder="NÍVEL 4" <?php } ?> >
+
+                                <input type="text" name="nivel5" class="input" id="nivel5"
+                                <?php if(!empty($configuracao)) { ?> value="<?php echo $configuracao["nivel_cinco"]; ?> "  
+                                <?php } else { ?> placeholder="NÍVEL 5" <?php } ?> >
+
+                                <button type="submit" class="submeter" name="configuracao" 
+                                value="<?php echo !empty($configuracao) ? "editar" : "adicionar"; ?>">
+                                <?php echo !empty($configuracao) ? "EDITAR" : "ADICIONAR"; ?></button>
+
+                            </form>
+                            <div class="aviso2">
+                            <?php
+                                if(isset($_SESSION['aviso2'])){ 
+                                    echo $_SESSION['aviso2'];
+                                    unset($_SESSION['aviso2']);
+                                }
+                            ?>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
