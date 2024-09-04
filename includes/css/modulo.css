@@ -76,8 +76,8 @@ a {
     content: url('../../imagens/desafios-b.svg'); 
 }
 
-.itens.ranking:hover img {
-    content: url('../../imagens/ranking-b.svg'); 
+.itens.questoes:hover img {
+    content: url('../../imagens/questoes-b.svg'); 
 }
 
 .itens.regras:hover img {

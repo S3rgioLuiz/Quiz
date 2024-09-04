@@ -27,13 +27,10 @@
                 <div class="col-2">
                     <div class="menu">
 
-                    <?php
-                        if($_SESSION["identificacao"] == "admin") {
-                    ?>
                         <div class="logo"> <a href="home.php"><img src="imagens/logo.png"></a> </div>
                         <div class="itens alertas"> <img src="imagens/alertas.svg"> ALERTAS </div>
                         <div class="itens painel"> <img src="imagens/painel.svg"> PAINEL </div>
-                        <div class="itens ranking"> <img src="imagens/ranking.svg"> RANKING </div>
+                        <a href="questoes.php"><div class="itens questoes"> <img src="imagens/questoes.svg"> QUESTÕES </div></a>
                         <div class="itens regras"> <img src="imagens/regras.svg"> REGRAS </div>
                         <div class="itens amigos"> <img src="imagens/amigos.svg"> USUÁRIOS </div>
                         <form id="sair" action="includes/logica/logica.php" method="post">
@@ -42,22 +39,7 @@
                                 <img src="imagens/sair.svg"> SAIR 
                             </div>
                         </form>
-                    <?php
-                        } else {
-                    ?>
-                        <div class="logo"> <a href="home.php"><img src="imagens/logo.png"></a> </div>
-                        <div class="itens alertas"> <img src="imagens/alertas.svg"> ALERTAS </div>
-                        <a href="amizade.php"><div class="itens amigos"> <img src="imagens/amigos.svg"> AMIGOS </div></a>
-                        <div class="itens desafios"> <img src="imagens/desafios.svg"> DESAFIOS </div>
-                        <div class="itens ranking"> <img src="imagens/ranking.svg"> RANKING </div>
-                        <div class="itens regras"> <img src="imagens/regras.svg"> REGRAS </div>
-                        <form id="sair" action="includes/logica/logica.php" method="post">
-                            <input type="hidden" name="sair" value="true">
-                            <div class="itens sair" onclick="document.getElementById('sair').submit();"> 
-                                <img src="imagens/sair.svg"> SAIR 
-                            </div>
-                        </form>
-                    <?php } ?>  
+                    
                     </div>
                 </div>
                 <div class="col-10 align-self-center sessao">

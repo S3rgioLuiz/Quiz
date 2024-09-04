@@ -33,7 +33,7 @@
                         <div class="logo"> <a href="home.php"><img src="imagens/logo.png"></a> </div>
                         <div class="itens alertas"> <img src="imagens/alertas.svg"> ALERTAS </div>
                         <div class="itens painel"> <img src="imagens/painel.svg"> PAINEL </div>
-                        <div class="itens ranking"> <img src="imagens/ranking.svg"> RANKING </div>
+                        <a href="questoes.php"><div class="itens questoes"> <img src="imagens/questoes.svg"> QUESTÕES </div></a>
                         <div class="itens regras"> <img src="imagens/regras.svg"> REGRAS </div>
                         <div class="itens amigos"> <img src="imagens/amigos.svg"> USUÁRIOS </div>
                         <form id="sair" action="includes/logica/logica.php" method="post">
@@ -74,10 +74,7 @@
                             </div>
                         </div>
                         <div class="col-3">
-                            <form method="post" action="modulo.php">
-                                <button type="submit" class="botao"> 
-                                    ADICIONAR </button>
-                            </form>
+                            <a href="modulo.php"> <button class="botao"> ADICIONAR </button></a>
                         </div>
                     </div>
 

@@ -80,6 +80,10 @@ a {
     content: url('../../imagens/ranking-b.svg'); 
 }
 
+.itens.questoes:hover img {
+    content: url("../../imagens/questoes-b.svg");
+}
+
 .itens.regras:hover img {
     content: url('../../imagens/regras-b.svg'); 
 }
