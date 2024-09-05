@@ -260,7 +260,19 @@ if(isset($_POST["configuracao"])){
             $_SESSION["aviso2"] = "ERRO - Repita o Procedimento.";
         }
         header("Location:../../configuracao.php");
-    } 
+    }
+    else if($_POST["configuracao"] == "editar"){
+        $array = array(number_format($_POST["tempo"]), number_format($_POST["nivel1"]), 
+        number_format($_POST["nivel2"]), number_format($_POST["nivel3"]), 
+        number_format($_POST["nivel4"]), number_format($_POST["nivel5"]), number_format($_POST["codigo"]));
+        $configuracao = editarConfiguracao($conexao, $array);
+        if($configuracao){
+            $_SESSION["aviso2"] = "Configuração Editada com Sucesso!";
+        } else {
+            $_SESSION["aviso2"] = "ERRO - Repita o Procedimento.";
+        }
+        header("Location:../../configuracao.php");
+    }
 }
 
 //********* ACESSAR *********

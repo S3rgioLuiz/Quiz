@@ -318,7 +318,7 @@ function selecionarModuloPorCodigo($conexao, $array){
 #MODULOS
 function editarModulo($conexao, $array) {
     try {
-        $query = $conexao->prepare("UPDATE modulo set nome=?, foto=?, descricao=? 
+        $query = $conexao->prepare("UPDATE modulo SET nome=?, foto=?, descricao=? 
         where codigo=?");
         $resultado = $query->execute($array);       
         return $resultado;
@@ -337,6 +337,18 @@ function adicionarConfiguracao($conexao, $array) {
         return $resultado;
     }
     catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
+}
+
+#MODULOS #CONFIGURAÇÃO
+function editarConfiguracao($conexao, $array) {
+    try {
+        $query = $conexao->prepare("UPDATE configuracao SET tempo=?, nivel_um=?, nivel_dois=?, 
+        nivel_tres=?, nivel_quatro=?, nivel_cinco=? WHERE codigo=?");
+        $resultado = $query->execute($array);       
+        return $resultado;
+    }catch(PDOException $e) {
         echo 'Error: ' . $e->getMessage();
     }
 }
