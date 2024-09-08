@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Set-2024 às 04:41
+-- Tempo de geração: 08-Set-2024 às 03:34
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -31,7 +31,7 @@ CREATE TABLE `alternativa` (
   `codigo` int(11) NOT NULL,
   `codigo_questao` int(11) NOT NULL,
   `opcao` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -47,15 +47,6 @@ CREATE TABLE `amizade` (
   `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Extraindo dados da tabela `amizade`
---
-
-INSERT INTO `amizade` (`codigo`, `remetente`, `destinatario`, `status`) VALUES
-(8, 11, 12, 1),
-(9, 11, 10, 1),
-(10, 12, 10, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -65,7 +56,7 @@ INSERT INTO `amizade` (`codigo`, `remetente`, `destinatario`, `status`) VALUES
 CREATE TABLE `configuracao` (
   `codigo` int(11) NOT NULL,
   `codigo_modulo` int(11) NOT NULL,
-  `dificuldade` int(11) NOT NULL,
+  `dificuldade` int(11) NOT NULL DEFAULT 1,
   `tempo` int(11) NOT NULL,
   `nivel_um` int(11) NOT NULL DEFAULT 0,
   `nivel_dois` int(11) NOT NULL DEFAULT 0,
@@ -73,6 +64,13 @@ CREATE TABLE `configuracao` (
   `nivel_quatro` int(11) NOT NULL DEFAULT 0,
   `nivel_cinco` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `configuracao`
+--
+
+INSERT INTO `configuracao` (`codigo`, `codigo_modulo`, `dificuldade`, `tempo`, `nivel_um`, `nivel_dois`, `nivel_tres`, `nivel_quatro`, `nivel_cinco`) VALUES
+(1, 11, 1, 120, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -93,7 +91,21 @@ CREATE TABLE `modulo` (
 --
 
 INSERT INTO `modulo` (`codigo`, `nome`, `foto`, `descricao`, `status`) VALUES
-(1, 'Nenhum', 'nenhum.svg', 'QUESTÕES NÃO CADASTRADAS EM MÓDULOS.', 0);
+(1, 'Nenhum', '66d4ddf908eea.svg', 'QUESTÕES NÃO CADASTRADAS EM MÓDULOS.', 0),
+(11, 'Operador de Atribuíção', '66d4c7821c1cf.svg', 'ATRIBUI UM VALOR AO OPERANDO À ESQUERDA BASEADO NO VALOR DO OPERANDO À DIREITA.', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `nivel`
+--
+
+CREATE TABLE `nivel` (
+  `codigo` int(11) NOT NULL,
+  `codigo_modulo` int(11) NOT NULL,
+  `codigo_questao` int(11) NOT NULL,
+  `nivel` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -103,13 +115,12 @@ INSERT INTO `modulo` (`codigo`, `nome`, `foto`, `descricao`, `status`) VALUES
 
 CREATE TABLE `questao` (
   `codigo` int(11) NOT NULL,
-  `codigo_modulo` int(11) NOT NULL,
   `foto` varchar(255) NOT NULL DEFAULT 'Sem Foto',
   `pergunta` varchar(255) NOT NULL,
   `explicacao` varchar(255) NOT NULL,
-  `referencia` varchar(255) NOT NULL DEFAULT 'DESCONHECIDO',
-  `nivel` int(11) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 0
+  `referencia` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `tipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -122,7 +133,7 @@ CREATE TABLE `questionario` (
   `codigo` int(11) NOT NULL,
   `codigo_teste` int(11) NOT NULL,
   `codigo_questao` int(11) NOT NULL,
-  `codigo_resposta` int(11) NOT NULL DEFAULT 0
+  `resposta` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -133,11 +144,12 @@ CREATE TABLE `questionario` (
 
 CREATE TABLE `teste` (
   `codigo` int(11) NOT NULL,
-  `codigo_modulo` int(11) NOT NULL,
   `codigo_usuario` int(11) NOT NULL,
-  `data` date NOT NULL,
-  `hora` time NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 0
+  `codigo_modulo` int(11) NOT NULL,
+  `tempo` int(11) NOT NULL DEFAULT 0,
+  `dia` date DEFAULT curdate(),
+  `hora` time DEFAULT curtime(),
+  `status` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -164,10 +176,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`codigo`, `apelido`, `nome`, `email`, `foto`, `pontuacao`, `senha`, `dificuldade`, `status`, `chave`) VALUES
-(9, 'Sergio', 'Sérgio Luiz Ramires do Rosário', 'sergiorosario.pl012@academico.ifsul.edu.br', 'Foto.svg', 0, '$2y$10$Udmh0b8Dgnex5TrYV3c0z.YALMsFnLNN3wiZePn7n6uWr.K8oIMVC', 1, 2, 'NULL'),
-(10, 'Paulo', 'Paulo Ricardo Pereira da Silva', 'shicoca2@gmail.com', 'Foto.svg', 0, '$2y$10$L5NPw0oQTH23iyAd.wfqhu9buEJQBgAs10qY3VVMKBOyAkDXi8ZDi', 1, 1, 'NULL'),
-(11, 'Luiz', 'Luiz Pereira Santos', 'sergio.ramires.rosario@gmail.com', 'Foto.svg', 0, '$2y$10$4p/cJxSB./YEmgx5VfFqzOJfCpl2S./pJ/1bN83WKedypzU.EMaTy', 1, 1, 'NULL'),
-(12, 'Squirtle', 'Mario Henrique Silva', 'sergio.luiz.rosario@gmail.com', 'Foto.svg', 0, '$2y$10$dO7foFCgLWH18ebdkAMfuuVbA.RySmOW4Pkjc4kSnom/Fvt5OmOjK', 1, 1, 'NULL');
+(9, 'Sergio', 'Sérgio Luiz Ramires do Rosário', 'sergiorosario.pl012@academico.ifsul.edu.br', 'Foto.svg', 0, '$2y$10$Udmh0b8Dgnex5TrYV3c0z.YALMsFnLNN3wiZePn7n6uWr.K8oIMVC', 1, 2, 'NULL');
 
 --
 -- Índices para tabelas despejadas
@@ -178,7 +187,7 @@ INSERT INTO `usuario` (`codigo`, `apelido`, `nome`, `email`, `foto`, `pontuacao`
 --
 ALTER TABLE `alternativa`
   ADD PRIMARY KEY (`codigo`),
-  ADD KEY `escolha` (`codigo_questao`);
+  ADD KEY `codigo_questao` (`codigo_questao`);
 
 --
 -- Índices para tabela `amizade`
@@ -202,28 +211,35 @@ ALTER TABLE `modulo`
   ADD PRIMARY KEY (`codigo`);
 
 --
+-- Índices para tabela `nivel`
+--
+ALTER TABLE `nivel`
+  ADD PRIMARY KEY (`codigo`),
+  ADD KEY `codigo_modulo` (`codigo_modulo`),
+  ADD KEY `codigo_questao` (`codigo_questao`);
+
+--
 -- Índices para tabela `questao`
 --
 ALTER TABLE `questao`
-  ADD PRIMARY KEY (`codigo`),
-  ADD KEY `pertence` (`codigo_modulo`);
+  ADD PRIMARY KEY (`codigo`);
 
 --
 -- Índices para tabela `questionario`
 --
 ALTER TABLE `questionario`
   ADD PRIMARY KEY (`codigo`),
-  ADD KEY `avaliacao` (`codigo_teste`),
-  ADD KEY `exame` (`codigo_questao`),
-  ADD KEY `verificacao` (`codigo_resposta`);
+  ADD KEY `codigo_teste` (`codigo_teste`),
+  ADD KEY `codigo_questao` (`codigo_questao`),
+  ADD KEY `resposta` (`resposta`);
 
 --
 -- Índices para tabela `teste`
 --
 ALTER TABLE `teste`
   ADD PRIMARY KEY (`codigo`),
-  ADD KEY `tentativa` (`codigo_usuario`),
-  ADD KEY `topico` (`codigo_modulo`);
+  ADD KEY `codigo_usuario` (`codigo_usuario`),
+  ADD KEY `codigo_modulo` (`codigo_modulo`);
 
 --
 -- Índices para tabela `usuario`
@@ -251,13 +267,19 @@ ALTER TABLE `amizade`
 -- AUTO_INCREMENT de tabela `configuracao`
 --
 ALTER TABLE `configuracao`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `modulo`
 --
 ALTER TABLE `modulo`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de tabela `nivel`
+--
+ALTER TABLE `nivel`
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `questao`
@@ -281,7 +303,7 @@ ALTER TABLE `teste`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restrições para despejos de tabelas
@@ -291,7 +313,7 @@ ALTER TABLE `usuario`
 -- Limitadores para a tabela `alternativa`
 --
 ALTER TABLE `alternativa`
-  ADD CONSTRAINT `escolha` FOREIGN KEY (`codigo_questao`) REFERENCES `questao` (`codigo`);
+  ADD CONSTRAINT `alternativa_ibfk_1` FOREIGN KEY (`codigo_questao`) REFERENCES `questao` (`codigo`);
 
 --
 -- Limitadores para a tabela `amizade`
@@ -307,25 +329,26 @@ ALTER TABLE `configuracao`
   ADD CONSTRAINT `criterio` FOREIGN KEY (`codigo_modulo`) REFERENCES `modulo` (`codigo`);
 
 --
--- Limitadores para a tabela `questao`
+-- Limitadores para a tabela `nivel`
 --
-ALTER TABLE `questao`
-  ADD CONSTRAINT `pertence` FOREIGN KEY (`codigo_modulo`) REFERENCES `modulo` (`codigo`);
+ALTER TABLE `nivel`
+  ADD CONSTRAINT `nivel_ibfk_1` FOREIGN KEY (`codigo_modulo`) REFERENCES `modulo` (`codigo`),
+  ADD CONSTRAINT `nivel_ibfk_2` FOREIGN KEY (`codigo_questao`) REFERENCES `questao` (`codigo`);
 
 --
 -- Limitadores para a tabela `questionario`
 --
 ALTER TABLE `questionario`
-  ADD CONSTRAINT `avaliacao` FOREIGN KEY (`codigo_teste`) REFERENCES `teste` (`codigo`),
-  ADD CONSTRAINT `exame` FOREIGN KEY (`codigo_questao`) REFERENCES `questao` (`codigo`),
-  ADD CONSTRAINT `verificacao` FOREIGN KEY (`codigo_resposta`) REFERENCES `alternativa` (`codigo`);
+  ADD CONSTRAINT `questionario_ibfk_1` FOREIGN KEY (`codigo_teste`) REFERENCES `teste` (`codigo`),
+  ADD CONSTRAINT `questionario_ibfk_2` FOREIGN KEY (`codigo_questao`) REFERENCES `questao` (`codigo`),
+  ADD CONSTRAINT `questionario_ibfk_3` FOREIGN KEY (`resposta`) REFERENCES `alternativa` (`codigo`);
 
 --
 -- Limitadores para a tabela `teste`
 --
 ALTER TABLE `teste`
-  ADD CONSTRAINT `tentativa` FOREIGN KEY (`codigo_usuario`) REFERENCES `usuario` (`codigo`),
-  ADD CONSTRAINT `topico` FOREIGN KEY (`codigo_modulo`) REFERENCES `modulo` (`codigo`);
+  ADD CONSTRAINT `teste_ibfk_1` FOREIGN KEY (`codigo_usuario`) REFERENCES `usuario` (`codigo`),
+  ADD CONSTRAINT `teste_ibfk_2` FOREIGN KEY (`codigo_modulo`) REFERENCES `modulo` (`codigo`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -189,7 +189,6 @@ if(isset($_POST['excluir'])){
     $array = array($_POST['codigo'], $_SESSION['codigo'], $_POST['codigo'], $_SESSION['codigo']);
     $excluir = excluirAmigo($conexao, $array);
 
-
     $_SESSION['aviso'] = $excluir ? $_POST['apelido']." Foi Excluído!" : "ERRO! Repita o Procedimento.";
     header("Location:../../amizade.php");
 }
@@ -282,6 +281,23 @@ if(isset($_POST["acessar"])) {
         $_SESSION["modulo"] = $_POST["codigo"];
         header("Location:../../configuracao.php");
     }
+}
+
+
+//********* SALVAR CÓDIGO MÓDULO P/ CARREGAMENTO QUESTÕES *********
+if (isset($_POST['modulo_ajax'])) {
+    $_SESSION['modulo'] = $_POST['modulo_ajax'];
+    if($_SESSION["modulo"] == 1){
+        include "../../lista.php";
+    } else {
+        include '../../niveis.php';
+    }
+}
+
+//********* SALVAR NÍVEL PARA FILTRO DE QUESTÕES *********
+if (isset($_POST['nivel'])) {
+    $_SESSION['nivel'] = $_POST['nivel'];
+    include '../../lista.php';
 }
 
 ?>

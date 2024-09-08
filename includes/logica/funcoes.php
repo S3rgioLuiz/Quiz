@@ -353,4 +353,50 @@ function editarConfiguracao($conexao, $array) {
     }
 }
 
+#MODULOS #QUESTÕES
+function selecionarModulos($conexao){
+    try
+    {
+        $query = $conexao->prepare("SELECT codigo, nome FROM modulo");
+        $query->execute();
+        $modulos = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $modulos;
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
+#QUESTÕES
+function selecionarQuestoesSemModulo($conexao){
+    try
+    {
+        $query = $conexao->prepare("SELECT questao.codigo, questao.foto, questao.pergunta, questao.status 
+        FROM questao LEFT JOIN nivel ON (questao.codigo = nivel.codigo_questao) WHERE nivel.codigo_questao IS NULL");
+        $query->execute();
+        $modulos = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $modulos;
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
+#QUESTÕES
+function selecionarQuestoesPorNivel($conexao, $array){
+    try
+    {
+        $query = $conexao->prepare("SELECT questao.codigo, questao.foto, questao.pergunta, questao.status 
+        FROM questao JOIN nivel ON (questao.codigo = nivel.codigo_questao) 
+        WHERE nivel.codigo_modulo=? AND nivel.nivel=?");
+        $query->execute($array);
+        $modulos = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $modulos;
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
+
+
 ?>
