@@ -72,10 +72,6 @@ a {
     content: url('../../imagens/alertas-b.svg'); 
 }
 
-.itens.desafios:hover img {
-    content: url('../../imagens/desafios-b.svg'); 
-}
-
 .itens.questoes:hover img {
     content: url('../../imagens/questoes-b.svg'); 
 }
@@ -92,7 +88,7 @@ a {
     content: url('../../imagens/painel-b.svg'); 
 }
 
-.modulo .col-6 {
+.questao .col-6 {
     background-color: rgba(30, 29, 29, 0.8);
    text-align: center;
 }
@@ -105,54 +101,63 @@ a {
     margin-bottom: 2vh;
 }
 
-.nome1 {
+.modulo {
+    color: #bbbbbb;
+    font-weight: bolder;
+    margin-bottom: 2vh;
+}
+
+.arquivo {
+    display: none;
+}
+
+.arquivo_label {
+    display: inline-block;
+    background-color: #034435; 
+    color: white; 
+    font-weight: bolder;
+    width: 50%;
+    border-radius: 1%;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+.arquivo_label.invalid {
+    background-color: red;
+}
+
+.pergunta, .explicacao, .referencia {
     background-color: transparent;
+    width: 100%;
+    color: #bbbbbb;
+    font-weight: bolder;
     border: 2px #00EA83 solid;
-    width: 100%;
-    height: 8vh;
-    color: #bbbbbb;
-    font-weight: bolder;
     margin-bottom: 2vh;
 }
 
-.nome1.invalid {
-    background-color: transparent;
+.pergunta.invalid,
+.explicacao.invalid,
+.referencia.invalid {
     border: 2px red solid;
-    width: 100%;
-    height: 8vh;
-    color: #bbbbbb;
-    font-weight: bolder;
-    margin-bottom: 2vh;
 }
 
-.nome1::placeholder,
-.descricao1::placeholder{
+.pergunta, .explicacao {
+    height: 16vh;
+}
+
+.referencia {
+    height: 8vh;
+}
+
+.pergunta::placeholder,
+.explicacao::placeholder,
+.referencia::placeholder {
     text-align: center;
 }
 
-.descricao1 {
-    background-color: transparent;
-    border: 2px #00EA83 solid;
-    width: 100%;
-    height: 16vh;
-    color: #bbbbbb;
-    font-weight: bolder;
-    margin-bottom: 2vh;
-    margin-top: 2vh;
-}
-
-.descricao1.invalid {
-    background-color: transparent;
-    border: 2px red solid;
-    width: 100%;
-    height: 16vh;
-    color: #bbbbbb;
-    font-weight: bolder;
-    margin-bottom: 2vh;
-    margin-top: 2vh;
-}
-
-.descricao1::-webkit-scrollbar {
+.pergunta::-webkit-scrollbar, 
+.explicacao::-webkit-scrollbar {
     width: 1px; 
     height: 1px; 
 }
@@ -164,32 +169,6 @@ a {
     width: 60%;
     height: 8vh;
     margin-bottom: 2vh;
-}
-
-.arquivo1 {
-    display: none;
-}
-
-.arquivo-label {
-    display: inline-block;
-    background-color: #034435; 
-    color: white; 
-    font-weight: bolder;
-    width: 50%;
-    border-radius: 1%;
-    cursor: pointer;
-    text-align: center;
-}
-
-.arquivo_label.invalid {
-    display: inline-block;
-    background-color: red; 
-    color: white; 
-    font-weight: bolder;
-    width: 50%;
-    border-radius: 1%;
-    cursor: pointer;
-    text-align: center;
 }
 
 .aviso {
