@@ -66,7 +66,7 @@
                                     name="explicacao" class="explicacao"></textarea>
 
                                 <input type="text" name="referencia" class="referencia" placeholder="DIGITE A REFERÊNCIA">
-
+                                <input type="text" name="nivel" class="nivel" placeholder="DIGITE O NÍVEL">    
                                 <button type="submit" class="adicionar" name="questao" value="adicionar"> ADICIONAR </button>
                             </form>
                             <div class="aviso">

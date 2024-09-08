@@ -127,7 +127,7 @@ a {
     background-color: red;
 }
 
-.pergunta, .explicacao, .referencia {
+.pergunta, .explicacao, .referencia, .nivel {
     background-color: transparent;
     width: 100%;
     color: #bbbbbb;
@@ -138,7 +138,8 @@ a {
 
 .pergunta.invalid,
 .explicacao.invalid,
-.referencia.invalid {
+.referencia.invalid,
+.nivel.invalid {
     border: 2px red solid;
 }
 
@@ -146,13 +147,14 @@ a {
     height: 16vh;
 }
 
-.referencia {
+.referencia, .nivel {
     height: 8vh;
 }
 
 .pergunta::placeholder,
 .explicacao::placeholder,
-.referencia::placeholder {
+.referencia::placeholder,
+.nivel::placeholder {
     text-align: center;
 }
 

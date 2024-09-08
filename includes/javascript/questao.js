@@ -1,6 +1,13 @@
 window.onload = function(){
     let adicionar = document.querySelector(".adicionar");
+    let nivel = document.querySelector(".nivel");
+
     adicionar.addEventListener("click", validaQuestao);
+    nivel.addEventListener("keypress", validaNivel);
+}
+
+function validaNivel(event) {
+    if((event.keyCode < 49 || event.keyCode > 53) || (this.value.length >= 1)) event.preventDefault();
 }
 
 function validaQuestao(event) {
@@ -10,6 +17,7 @@ function validaQuestao(event) {
     let pergunta = document.querySelector(".pergunta");
     let explicacao = document.querySelector(".explicacao");
     let referencia = document.querySelector(".referencia");
+    let nivel = document.querySelector(".nivel");
     let extensoes = ['jpg', 'jpeg', 'png', 'svg'];
     let d = 0;
 
@@ -30,6 +38,12 @@ function validaQuestao(event) {
         d++;
     } else if (referencia.classList.contains("invalid") && referencia.value != "") 
         referencia.classList.remove("invalid");
+
+    if (nivel.value == "") {
+        nivel.classList.add("invalid");
+        d++;
+    } else if (nivel.classList.contains("invalid") && nivel.value != "") 
+        nivel.classList.remove("invalid");
 
     if(d > 0){
         event.preventDefault();
