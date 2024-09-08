@@ -7,6 +7,7 @@
     }
 
     if(!empty($questoes)){
+        var_dump($questoes); die;
 ?>
 
 <?php

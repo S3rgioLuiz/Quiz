@@ -372,7 +372,8 @@ function selecionarQuestoesSemModulo($conexao){
     try
     {
         $query = $conexao->prepare("SELECT questao.codigo, questao.foto, questao.pergunta, questao.status 
-        FROM questao LEFT JOIN nivel ON (questao.codigo = nivel.codigo_questao) WHERE nivel.codigo_questao IS NULL");
+        FROM questao LEFT JOIN nivel ON (questao.codigo = nivel.codigo_questao) 
+        WHERE nivel.codigo_questao IS NULL ORDER BY questao.codigo DESC");
         $query->execute();
         $modulos = $query->fetchAll(PDO::FETCH_ASSOC);
         return $modulos;
@@ -388,7 +389,7 @@ function selecionarQuestoesPorNivel($conexao, $array){
     {
         $query = $conexao->prepare("SELECT questao.codigo, questao.foto, questao.pergunta, questao.status 
         FROM questao JOIN nivel ON (questao.codigo = nivel.codigo_questao) 
-        WHERE nivel.codigo_modulo=? AND nivel.nivel=?");
+        WHERE nivel.codigo_modulo=? AND nivel.nivel=? ORDER BY nivel.codigo DESC");
         $query->execute($array);
         $modulos = $query->fetchAll(PDO::FETCH_ASSOC);
         return $modulos;
@@ -396,6 +397,50 @@ function selecionarQuestoesPorNivel($conexao, $array){
     catch(PDOException $e) {
         echo 'Error: ' . $e->getMessage();
     }  
+}
+
+#QUESTÕES
+function adicionarQuestaoSemFoto($conexao, $array) {
+    try {
+        $query = $conexao->prepare("INSERT INTO questao(pergunta, explicacao, referencia) VALUES(?,?,?)");
+        $resultado = $query->execute($array);
+        if ($resultado) {
+            return $conexao->lastInsertId();
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
+}
+
+#QUESTÕES
+function adicionarQuestaoComFoto($conexao, $array) {
+    try {
+        $query = $conexao->prepare("INSERT INTO questao(foto, pergunta, explicacao, referencia) VALUES(?,?,?,?)");
+        $resultado = $query->execute($array);
+        if ($resultado) {
+            return $conexao->lastInsertId();
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
+}
+
+function adicionarNivel($conexao, $array) {
+    try {
+        $query = $conexao->prepare("INSERT INTO nivel(codigo_questao, codigo_modulo, nivel) VALUES(?,?,?)");
+        $resultado = $query->execute($array);
+        if ($resultado) {
+            return $conexao->lastInsertId();
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
 }
 
 

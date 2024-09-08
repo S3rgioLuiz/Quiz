@@ -300,4 +300,42 @@ if (isset($_POST['nivel'])) {
     include '../../lista.php';
 }
 
+//********* QUESTÃO *********
+if(isset($_POST["questao"])) {
+    //****** MÓDULO ****** 
+    if($_POST["questao"] == "adicionar") {
+        $extensao = pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION);
+        if(empty($extensao)){
+            $array = array($_POST["pergunta"], $_POST["explicacao"], $_POST["referencia"]);
+            $questao = adicionarQuestaoSemFoto($conexao, $array);
+        } else {
+            $uid = uniqid();
+            $nome_arquivo = $uid . '.' . $extensao;
+            $tamanho_arquivo = $_FILES['arquivo']['size']; 
+            $arquivo_temporario = $_FILES['arquivo']['tmp_name'];
+            move_uploaded_file($arquivo_temporario, "../../imagens/$nome_arquivo");
+            $array = array($nome_arquivo, $_POST["pergunta"], $_POST["explicacao"], $_POST["referencia"]);
+            $questao = adicionarQuestaoComFoto($conexao, $array);
+        }
+
+        if($questao){
+           $array2 = array($questao, number_format($_POST["codigo"]), number_format($_POST["nivel"]));
+           $nivel = adicionarNivel($conexao, $array2);
+
+           if($nivel) {
+                $_SESSION["aviso1"] = "Questão Criada com Sucesso!";
+                $_SESSION["questao"] = $nivel;
+                header("Location:../../alternativas.php");
+           } else {
+                $_SESSION["aviso"] = "ERRO - Repita o Procedimento!";
+                header("Location:../../questao.php"); 
+           }
+
+        } else {
+            $_SESSION["aviso"] = "ERRO - Repita o Procedimento!";
+            header("Location:../../questao.php");
+        }
+    }
+}
+
 ?>
