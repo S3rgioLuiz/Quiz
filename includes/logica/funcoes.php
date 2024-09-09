@@ -465,5 +465,28 @@ function selecionarQuestaoPorCodigo($conexao, $array){
     }  
 }
 
+#QUESTÕES #NÍVEL
+function editarQuestao($conexao, $array1, $array2) {
+    try {
+        $conexao->beginTransaction();
+        $questao = $conexao->prepare("UPDATE questao SET foto = ?, pergunta = ?, explicacao = ?, 
+        referencia = ? WHERE codigo = ?");
+        $resultadoQuestao = $questao->execute($array1);
+
+        $nivel = $conexao->prepare("UPDATE nivel SET nivel = ? WHERE codigo_questao = ? AND codigo_modulo = ?");
+        $resultadoNivel = $nivel->execute($array2);
+
+        $conexao->commit();
+
+        return $resultadoQuestao && $resultadoNivel; 
+
+    } catch(PDOException $e) {
+        $conexao->rollBack();
+        echo 'Error: ' . $e->getMessage();
+        return false;
+    }
+}
+
+
 ?>
 

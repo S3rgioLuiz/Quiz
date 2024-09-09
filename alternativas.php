@@ -64,9 +64,11 @@
                         <div class="col-6 questao">
                             <div class="titulo"> QUESTÃO </div>
                             <form method="post" action="includes/logica/logica.php" enctype="multipart/form-data">
-                            <input type="hidden" name="codigo" value="<?php echo $modulo["codigo"]; ?>">
+
+                                <input type="hidden" name="codigo" value="<?php echo $modulo["codigo"]; ?>">
                                 <div class="modulo"> <?php echo $modulo["nome"]; ?> </div>
 
+                                <input type="hidden" name="foto" value="<?php echo $questao["foto"]; ?>">
                                 <?php if($questao["foto"] != "Sem Foto") { ?>
                                 <div class="foto"> <img src="imagens/<?php echo $questao["foto"]; ?>"> </div>
                                 <?php } ?>
@@ -102,7 +104,9 @@
                         </div>
 
                         <div class="col-4 offset-1 alternativas">
+                            <div class="carrega">
 
+                            </div>
                         </div>
 
                     </div>

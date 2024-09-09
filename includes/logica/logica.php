@@ -341,6 +341,31 @@ if(isset($_POST["questao"])) {
             header("Location:../../questao.php");
         }
     }
+    //****** ADICIONAR ******
+    else if($_POST["questao"] == "editar") {
+        $extensao = pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION);
+        if(empty($extensao)){
+            $array1 = array($_POST["foto"], $_POST["pergunta"], 
+            $_POST["explicacao"], $_POST["referencia"], $_SESSION["questao"]);
+        } else {
+            $uid = uniqid();
+            $nome_arquivo = $uid . '.' . $extensao;
+            $tamanho_arquivo = $_FILES['arquivo']['size']; 
+            $arquivo_temporario = $_FILES['arquivo']['tmp_name'];
+            move_uploaded_file($arquivo_temporario, "../../imagens/$nome_arquivo");
+            $array1 = array($nome_arquivo, $_POST["pergunta"], $_POST["explicacao"], 
+            $_POST["referencia"], $_SESSION["questao"]);
+        }
+        $array2 = array(number_format($_POST["nivel"]), $_SESSION["questao"], $_SESSION["modulo"]);
+        $questao = editarQuestao($conexao, $array1, $array2);
+        if($questao){
+            $_SESSION["aviso1"] = "Questão Editada com Sucesso!";
+            header("Location:../../alternativas.php");
+        } else {
+            $_SESSION["aviso1"] = "ERRO - Repita o Procedimento!";
+            header("Location:../../alternativas.php");
+        }
+    }
 }
 
 ?>

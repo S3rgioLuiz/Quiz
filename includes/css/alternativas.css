@@ -112,7 +112,7 @@ a {
     background-color: #00EA83;
 }
 
-.questao, .alternativas {
+.questao, .alternativas .carrega {
     background-color: rgba(30, 29, 29, 0.8);
     text-align: center;
 }
@@ -122,12 +122,14 @@ a {
     align-items: center;
 }
 
-.area {
-    height: 85vh;
+.sessao {
+    height: 100vh;
     overflow: scroll;
 }
 
-.area::-webkit-scrollbar {
+.pergunta::-webkit-scrollbar, 
+.explicacao::-webkit-scrollbar,
+.sessao::-webkit-scrollbar {
     width: 1%; 
     height: 1vh; 
 }
