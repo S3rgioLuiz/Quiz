@@ -387,7 +387,8 @@ function selecionarQuestoesSemModulo($conexao){
 function selecionarQuestoesPorNivel($conexao, $array){
     try
     {
-        $query = $conexao->prepare("SELECT questao.codigo, questao.foto, questao.pergunta, questao.status 
+        $query = $conexao->prepare("SELECT questao.codigo, questao.foto, 
+        questao.pergunta, questao.status 
         FROM questao JOIN nivel ON (questao.codigo = nivel.codigo_questao) 
         WHERE nivel.codigo_modulo=? AND nivel.nivel=? ORDER BY nivel.codigo DESC");
         $query->execute($array);

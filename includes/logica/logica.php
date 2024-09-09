@@ -281,6 +281,11 @@ if(isset($_POST["acessar"])) {
         $_SESSION["modulo"] = $_POST["codigo"];
         header("Location:../../configuracao.php");
     }
+    //****** QUESTÃO ****** 
+    if($_POST["acessar"] == "questao"){
+        $_SESSION["questao"] = $_POST["codigo"];
+        header("Location:../../alternativas.php");
+    }
 }
 
 
@@ -324,7 +329,7 @@ if(isset($_POST["questao"])) {
 
            if($nivel) {
                 $_SESSION["aviso1"] = "Questão Criada com Sucesso!";
-                $_SESSION["questao"] = $nivel;
+                $_SESSION["questao"] = $questao;
                 header("Location:../../alternativas.php");
            } else {
                 $_SESSION["aviso"] = "ERRO - Repita o Procedimento!";

@@ -170,4 +170,72 @@ a {
 .texto {
     color: white;
     font-weight: bolder;
+    text-align: center;
+    margin-top: 3vh;
+}
+
+.pergunta1, .pergunta2 {
+    width: 100%;
+    color: white;
+    font-weight: bolder;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.oculto, .visivel {
+    width: 100%;
+    background-color: rgba(30, 29, 29, 0.8);
+    box-sizing: border-box;
+    border: 1ch solid;
+    border-image-slice: 1;
+}
+
+.oculto {
+    border-image-source: linear-gradient(45deg, #55BF91, #969696);
+}
+
+.visivel {
+    border-image-source: linear-gradient(45deg, #55BF91, #00EA83);
+}
+
+.foto {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.foto img {
+    max-width: 100%;
+    height: 20vh;
+}
+
+.pergunta1 {
+    height: 35vh;
+}
+
+.pergunta2 {
+    height: 15vh;
+}
+
+.infos form {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.infos button {
+    color: white;
+    background-color: #00EA83;
+    font-weight: bolder;
+    height: 8vh;
+    width: 60%;
+    border: 0;
+    margin-top: 1vh;
+    margin-bottom: 3vh;
+    
 }
