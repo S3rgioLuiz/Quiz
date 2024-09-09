@@ -62,3 +62,29 @@ function validaEdicao(event) {
         }
     }
 }
+
+function carregaAlternativas(event) {
+    const alternativa = event.target.value;
+
+    const ajax = new XMLHttpRequest();
+
+    if(alternativa == 1)
+        ajax.open('GET', 'comum.php');
+    else if(alternativa == 2)
+        ajax.open('GET', 'imagens.php');
+    else
+        ajax.open('GET', 'vef.php');
+
+    ajax.send();
+    
+    ajax.addEventListener('load', function() {
+        if (this.status === 200 && this.readyState === 4) {
+            const alternativaContainer = document.querySelector(".carrega");
+            if (alternativaContainer) {
+                alternativaContainer.innerHTML = this.responseText;
+            }
+        } else {
+            console.error('Erro ao carregar alternativas.php:', this.status);
+        }
+    });
+}
