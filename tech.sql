@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Set-2024 às 03:34
+-- Tempo de geração: 09-Set-2024 às 04:59
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -107,6 +107,20 @@ CREATE TABLE `nivel` (
   `nivel` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `nivel`
+--
+
+INSERT INTO `nivel` (`codigo`, `codigo_modulo`, `codigo_questao`, `nivel`) VALUES
+(1, 11, 5, 1),
+(3, 11, 7, 1),
+(4, 11, 8, 2),
+(5, 11, 9, 2),
+(6, 11, 10, 1),
+(7, 11, 11, 2),
+(8, 11, 12, 3),
+(9, 11, 13, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -120,8 +134,22 @@ CREATE TABLE `questao` (
   `explicacao` varchar(255) NOT NULL,
   `referencia` varchar(255) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
-  `tipo` int(11) NOT NULL
+  `tipo` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `questao`
+--
+
+INSERT INTO `questao` (`codigo`, `foto`, `pergunta`, `explicacao`, `referencia`, `status`, `tipo`) VALUES
+(5, 'Sem Foto', 'Qual é a função do operador de atribuição \"=\" em uma expressão de programação?', 'O operador \"=\" atribui o valor à direita a uma variável à esquerda, como \"x = 5\". ', 'Microsoft Learn - Assignment Operator', 0, 0),
+(7, '66dd44e9c8585.svg', 'Qual o valor de \"X\"?', 'Ele atribui o valor \"5\" à variável \"X\"', 'Python Documentation - Assignment Operators', 0, 0),
+(8, '66de35f1a1567.svg', 'Qual o valor de \"a\"?', 'A variável a inicialmente recebe o valor \"6\", mas depois é reatribuída com o valor \"3\". A última atribuição é a que prevalece, então o valor final de \"a\" é \"3\".', 'Tutorial de C#: Operadores de atribuição.', 0, 0),
+(9, '66de376e523ee.svg', 'Qual o valor de \"b\"?', 'A variável \"b\" inicialmente recebe o valor \"8\", mas depois é reatribuída com o valor \"5\". A última atribuição é a que prevalece, então o valor final de \"b\" é \"5\".', 'Documentação C: Operadores de atribuição.', 0, 0),
+(10, '66de38cb05531.svg', 'Qual o valor de \"a\"?', 'Ele atribui o valor \"1\" à variável \"a\".', 'Documentação C: Operadores de atribuição.', 0, 0),
+(11, '66de3aa2302de.svg', 'Qual o valor de \"b\"?', 'A variável \"a\" é declarada com o valor 1. Depois, a variável \"b\" é declarada e atribuída ao valor de \"a\", que é 1. Portanto, \"b\" também será igual a 1.', 'Documentação C: Operadores de atribuição.', 0, 0),
+(12, '66de3bce38be4.svg', 'Qual o valor de \"a\"?', 'A variável \"a\" é inicialmente 12. Em seguida, \"a\" é redeclarada como \"a\" + 1, usando seu valor inicial 12. Portanto, \"a\" se torna 13.', ' Documentação C: Operadores de atribuição.', 0, 0),
+(13, '66de3dc1b2e60.svg', 'Qual o valor de \"c\"?', 'É atribuído o valor 7 à variável \"c\".', ' Documentação C: Operadores de atribuição.', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -279,13 +307,13 @@ ALTER TABLE `modulo`
 -- AUTO_INCREMENT de tabela `nivel`
 --
 ALTER TABLE `nivel`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `questao`
 --
 ALTER TABLE `questao`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `questionario`

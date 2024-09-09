@@ -430,6 +430,7 @@ function adicionarQuestaoComFoto($conexao, $array) {
     }
 }
 
+#QUESTÕES #NÍVEL #MÓDULO
 function adicionarNivel($conexao, $array) {
     try {
         $query = $conexao->prepare("INSERT INTO nivel(codigo_questao, codigo_modulo, nivel) VALUES(?,?,?)");
@@ -444,5 +445,25 @@ function adicionarNivel($conexao, $array) {
     }
 }
 
+#questões #NÍVEL
+function selecionarQuestaoPorCodigo($conexao, $array){
+    try
+    {
+        $query = $conexao->prepare("SELECT questao.codigo, questao.foto, questao.pergunta, 
+        questao.explicacao, questao.referencia, nivel.nivel FROM questao 
+        JOIN nivel ON (questao.codigo = nivel.codigo_questao) WHERE questao.codigo=?");
+        if($query->execute($array)){
+            $questao = $query->fetch(PDO::FETCH_ASSOC);
+            return $questao;
+        }
+        else {
+            return false;
+        }
+    }
+    catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }  
+}
 
 ?>
+

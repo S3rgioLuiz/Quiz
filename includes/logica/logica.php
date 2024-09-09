@@ -307,7 +307,7 @@ if (isset($_POST['nivel'])) {
 
 //********* QUESTÃO *********
 if(isset($_POST["questao"])) {
-    //****** MÓDULO ****** 
+    //****** ADICIONAR ****** 
     if($_POST["questao"] == "adicionar") {
         $extensao = pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION);
         if(empty($extensao)){
